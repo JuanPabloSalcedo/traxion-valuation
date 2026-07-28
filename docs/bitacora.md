@@ -7,7 +7,157 @@ Orden cronológico inverso: la entrada más reciente primero.
 Formato: fecha, qué se encontró o decidió, en qué se basa,
 qué implica para el resto del modelo.
 
-## 2026-07-26 - Decisión del año base
+## 2026 - 07-28 - Decisión del año base
+
+Teniendo en cuenta que toda la valoración crece desde el año base es probablemente el supuesto que más pesa.
+
+**Construcción**
+Por el lado de los ingresos se tomarán los UDM a junio de 2026 de 38082.2 millones. Reflejando doce meses sorridos con Solistica consolidada.
+
+Por otro lado, el margen operativo viene cayendo desde 2023.
+Mirando los segmentos del negocio por separado se observa:
+
+![Logística y Tecnología, comparativo 6M25 vs 6M26](img/segmento_logistica_6M26.png)
+
+Margen Logistica y tecnología 6M25: 148 / 4,622 = 3.20%
+Para 6M26: 2.24%
+
+![Movilidad de Carga, comparativo 6M25 vs 6M26](img/segmento_carga_6M26.png)
+
+Margen Movilidad de carga 6M25: 7.74%
+Para 6M26: 0.11%.
+
+![Movilidad de Personas, comparativo 6M25 vs 6M26](img/segmento_personas_6M26.png)
+
+Margen Movilidad de personas 6M25: 15.58%
+Para 6M26: 13.21%
+
+Los segmentos caen pero Movilidad de carga se desploma.
+Marge consolidado 6M25: 8.74%
+Margen consolidado 6M26: 4.93%, el mismo reportado en "Construcción de los ultimos doce meses a junio 2026"
+
+Decisión del Margen:
+Se adopta el escenario en que movilidad de carga recupera su margen de 7.74%, mientras logística y personas se quedan donde están hoy.
+un segmento no opera indefinidamente en pérdida. Carga cayó por causas identificadas y reversibles —alza del combustible por el conflicto en Medio Oriente, incertidumbre arancelaria, peso fuerte frente a ingresos en dólares. La empresa ya anunció alzas de precios y salida de activos no rentables.
+
+Este supuesto deja un Margen de 6.45% como base.
+
+**AÑO BASE**
+
+Ingresos base: 38082.2
+Margen operativo supuesto: 6.45%
+EBIT base: 38,082.2 × 6.45% = 2,456.3
+
+
+## 2026-07-28 - Construcción de los ultimos doce meses a junio 2026
+
+El año base debe representar a la empresa que se va a valorar: Traxión con Solistica, operando doce meses. Ningún ejercicio anual cumple eso. Solistica consolida desde el 1 de julio de 2025, así que 2025 solo
+tiene seis meses y 2026 aún no cierra.
+
+El día de hoy se verificó que Traxion ya publicó el 2T26. Esto permite tener un periodo de doce meses completos con SOlistica y no tener que anualizar el aporte de seis meses.
+
+**Construcción** 
+Se armara con una identidad como esta:
+UDM Julio2025-Junio2026 = Año2025 completo - 1Semestre2025 + 1Semestre 2026
+
+El año 2025 ya esta en la serie histórica; 1S25 y 1S26 salen ambos del reporte 2T26, columnas 6M25 y 6M26.
+
+Evidentemente la identidad solo aplica para flujos cmo ingresos, EBIT, DyA, gasto por intereses, impuestos, capex. Las cuentas de balance se toman directo del corte al 20 de junio de 2026.
+
+La empresa reporta razones de apalancamiento sobre EBITDA UDM (p. 8 del 2T26): deuda total / EBITDA UDM = 2.66x y deuda neta / EBITDA UDM = 2.40x, con su propia definición de deuda (14,016, que excluye IFRS 16).
+
+Reproducir esas dos cifras con el EBITDA UDM construido aquí sirve de prueba: si coinciden, la construcción de la ventana es correcta, ya que se llega a un dato publicado sin haberlo usado para armarla.
+
+**Fuentes**
+- Reporte Trimestral 2T26: estado de resultados (p. 14), estado de flujos de efectivo (p. 15), estado de situación financiera (p. 13), perfil de la deuda (p. 8).
+- Serie histórica 2021-2025 en data/interim/traxion_anual.csv.
+
+Tras esta decisión se agrega una fila al CSV con anio = 2026.5 para que ordene despues de 2025. La serie anual 2021-2025 no se modifica.
+
+**Resultado**
+
+| Concepto | UDM jul25-jun26 |
+|---|---|
+| Ingresos | 38,082.2 |
+| EBIT | 2,152.3 |
+| EBIT normalizado | 2,163.5 |
+| D&A | 3,111.4 |
+| EBITDA | 5,263.7 |
+| Gasto por intereses | 1,753.8 |
+| Deuda ajustada (jun-26) | 15,935.7 |
+| Efectivo (jun-26) | 1,383.0 |
+| Capital contable (jun-26) | 14,260.9 |
+
+
+Con la definición de deuda de la empresa (14,016, excluye IFRS 16):
+
+14,016 / 5,263.7 = 2.66x   coincide con lo reportado
+12,633 / 5,263.7 = 2.40x   coincide
+
+está bien construida: reproduce dos cifras publicadas que no se usaron para armarla.
+
+Con la deuda ajustada adoptada en este proyecto (15,935.7), el apalancamiento real es 3.03x bruto y 2.76 neto, casi cuatro décimas
+por encima de lo que comunica la empresa.
+
+**Hallazgo: el margen no se recuperó**
+
+| Período | Margen EBIT |
+|---|---|
+| 2023 | 9.31% |
+| 2024 | 9.21% |
+| 2025 | 7.37% |
+| UDM a jun-26 | 5.68% |
+| 1S26 | 4.93% |
+| 2T26 | 4.83% |
+
+La cobertura de intereses sigue la misma trayectoria: 1.40x en 2025, 1.23x en los UDM.
+
+Esto contradice el supuesto de recuperación parcial que se venía manejando. La evidencia disponible dice que el deterioro continúa y que
+el trimestre más reciente es el peor de la serie.
+
+
+**Limitación**
+
+Los reportes trimestrales no incluyen reconciliación de EBITDA ajustado, a diferencia de los anuales. No es posible identificar partidas no recurrentes del 1S26. El EBIT normalizado UDM puede estar subestimado si la reorganización generó costos de una sola vez.
+
+
+## 2026-07-28 - Descomposicion organica: crecimiento y margen
+
+Calculado con src/datos.py (funciones serie_organica y margenes) sobre data/interim/traxion_anual.csv.
+
+**Crecimiento 2024 . 2025**
+
+| Medida | Calculo | Resultado |
+|---|---|---|
+| Consolidado | 33814.1 / 29141.7 - 1 | 16.03% |
+| Organico | 30078.2 / 29141.7 - 1 | 3.21% |
+
+Casi 13 puntos de diferencia. El crecimiento consolidado esta inflado por la adquisicion: el negocio base crecio 3.2%, no 16%. Proyectar sobre a cifra consolidada sobreestimaria el valor de forma severa.
+La tasa relevante para la proyeccion es la organica. Que es lo que ya se intuia.
+
+**Margen operativo**
+
+| Concepto | Margen EBIT norm. |
+|---|---|
+| 2024 (todo organico) | 9.21% |
+| 2025 organico (Traxion sin Solistica) | 7.34% |
+| Solistica sola (6 meses) | 7.67% |
+| 2025 consolidado | 7.37% |
+
+**Correccion de un diagnostico anterior** 
+
+La entrada del 2026-07-26 atribuia la caida de margen de 2025 al cambio de mezcla por Solistica.
+La descomposicion muestra que es falso: el margen de Solistica (7.67%) esta por encima del margen del negocio base en 2025 (7.34%), de modo que la adquisicion elevo levemente el margen consolidado.
+
+La caida de 9.21% a 7.34% ocurre en el negocio original de Traxion.
+
+**Implicaciones**
+
+- El deterioro de rentabilidad es del negocio base, no un efecto contable. Hay que explicarlo: candidatos son el alza de combustible, la caida de volumen y precio en movilidad de carga por incertidumbre arancelaria, y el efecto cambiario sobre ingresos en USD (los tres mencionados  en el 1T26).
+- Esto reabre la pregunta del margen base: si el deterioro es ciclico,el margen normalizado deberia acercarse al historico (~9%); si es estructural, al nivel actual (~7.4%). La respuesta determina el ano base y, con el, buena parte de la valoracion.
+
+
+## 2026-07-26 - Decisión del año base (YA NO APLICA DEBIDO A QUE TRAXION YA PUBLICO 2T26)
 
 **Problema**
 
@@ -32,6 +182,8 @@ Y Cobertura de interees: ebit_normalizado / gasto_intereses
 | 2025 | 7.37% | 1.40x |
 
 El negocio operó en 8-9% de margen en 2022-2024. La caída a 7.4% en 2025 coincide con Solistica.
+[Corregido el 2026-07-28: la descomposicion organica muestra que la
+caida no proviene de la mezcla por Solistica. Vease entrada de esa fecha.]
 
 **Crecimiento real (sin Solistica):**
 
@@ -42,7 +194,7 @@ Contra 2024 (29,142): crecimiento cercani a 3.2%. El 16% consolidado es mayormen
 
 Ante la probelamatica se decide que el año base no se va a copiar de ningún año sino que se va a construir.
 - Tamaño (ingresos base): Traxión sin solistica + Solistica anualizada, para intentar reflejar la empresa completa de hoy.
-- Rentabilidad (margen base): margen EBIT normalizado de mediano plazo (~8-9% histórico)
+- Rentabilidad (margen base): margen EBIT normalizado de mediano plazo (8-9% histórico)
 - Los factores transitorios de 2025 (combustible, trimestre) seexcluyen; el efecto estructural de la mezcla post-Solistica se conserva.
 
 
@@ -244,7 +396,7 @@ Fuente: Reporte Trimestral 1T26, p. 5 (Análisis de Resultados).
 
 **Qué se encontro** 
 
-La propia administración advierte contra usar este trimestre como base:
+La administración advierte contra usar este trimestre como base:
 
 - El 1T25 fue "un trimestre particularmente favorable en términos financieros y operativos", y los trimestres siguientes se vieron afectados por fenómenos geopolíticos.
 - El margen EBITDA del 1T26 (13.7%) se ubica "en un nivel atípico comparado con las operaciones regulares de la compañía".
@@ -259,8 +411,8 @@ Integración de Solistica
 
 **Criterio aplicado**
 
-La base de proyección debe reflejar la capacidad normal de generación del negocio, no un punto atípico del ciclo. Ni el 1T25 (pico) ni el
-1T26 (valle) sirven aislados.
+La base de proyección debe reflejar la capacidad normal de generación del negocio, no un punto atípico del ciclo. Ni el 1T25 ni el
+1T26 sirven aislados.
 
 **Decisión**
 

@@ -15,6 +15,7 @@ Esta tabla permite reconstruirlos.
 | traxion_informe_integrado_2022.pdf | Informe integrado anual 2022 | https://traxion.global/es/inversionistas/reportes | 2026-07-25 |
 | traxion_2021_anual.pdf | Reporte anual 2021 | https://traxion.global/es/inversionistas/reportes | 2026-07-25 |
 | traxion_informe_integrado_2021.pdf | Informe integrado anual 2021 | https://traxion.global/es/inversionistas/reportes | 2026-07-25 |
+| traxion_2T26_trimestral.pdf | Reporte trimestral 2T26 | https://traxion.global/es/inversionistas/reportes | 2026-07-28 |
 
 
 ## Mapa de documentos
@@ -73,6 +74,20 @@ Los informes integrados se conservan como contexto corporativo. Las cifras finan
 | Indicadores financieros y operativos | 4 |
 | Análisis por segmento | 5,6,7 |
 | Perfil de la deuda | 8 y 9 |
+| Balance general | 13 |
+| Estado de resultados | 14 |
+| Estado de flujos de efectivo | 15 |
+
+### traxion_2T26_trimestral.pdf
+
+| Sección | Página |
+|---|---|
+| Mensaje del presidente ejecutivo | 3 |
+| Indicadores financieros y operativos | 4 |
+| Análisis de resultados y segmento logística | 5 |
+| Segmentos carga y personas | 6 |
+| Costos totales y resultado integral de financiamiento | 7 |
+| CapEx y perfil de la deuda | 8 |
 | Balance general | 13 |
 | Estado de resultados | 14 |
 | Estado de flujos de efectivo | 15 |
