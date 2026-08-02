@@ -1,7 +1,8 @@
 # Fuentes de datos
 
-Los PDFs originales no se versionan 
-Esta tabla permite reconstruirlos.
+
+Los reportes originales están en `data/raw/`. Esta tabla registra su
+procedencia y fecha de consulta.
 
 | Archivo | Documento | URL | Fecha descarga o consulta |
 |---|---|---|---|
@@ -24,7 +25,7 @@ Dónde está cada sección, para no volver a buscarla.
 
 ### informes integrados
 
-Los informes integrados se conservan como contexto corporativo. Las cifras financieras del modelo provienen exclusivamente de los reportes anuales regulatorios.
+Los informes integrados se conservan localmente como contexto corporativo pero no se versionan por su peso. Las cifras financieras del modelo provienen de los reportes anuales regulatorios.
 
 ### traxion_2021_anual.pdf
 

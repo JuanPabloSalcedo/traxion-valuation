@@ -2,5 +2,4 @@
 __pycache__/
 *.pyc
 .ipynb_checkpoints/
-data/raw/*
-!data/raw/.gitkeep
+data/raw/traxion_informe_integrado_*.pdf
