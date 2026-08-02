@@ -21,7 +21,7 @@ procedencia y fecha de consulta.
 
 ## Mapa de documentos
 
-Dónde está cada sección, para no volver a buscarla.
+Dónde está cada sección.
 
 ### informes integrados
 
