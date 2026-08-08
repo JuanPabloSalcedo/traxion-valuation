@@ -7,6 +7,184 @@ Orden cronológico inverso: la entrada más reciente primero.
 Formato: fecha, qué se encontró o decidió, en qué se basa,
 qué implica para el resto del modelo.
 
+
+## 2026-08-07 - Módulo 2 iniciado: moneda y tasa libre de riesgo
+
+Fuente metodológica: Damodaran, tasa libre de riesgo y consistencia de
+monedas.
+
+Fecha de valoración
+
+Se declara el **7 de agosto de 2026** como fecha de valoración.
+
+el año base son los últimos doce meses de operación disponibles (jul-2025 a jun-2026, del reporte 2T26), pero la valoración se hace a fecha de hoy. Es la práctica estándar: se valora con los estados financieros más recientes publicados, no se espera al siguiente cierre.
+
+Consecuencia: todos los datos de mercado, tasas, primas, spreads y el precio de la acción para la verificación final, se toman a esta misma¿ fecha. Mezclar tasas de una fecha con precio de otra descuadra la comparación del Módulo 7.
+
+
+### Decisión de moneda
+
+**El principio:** la tasa de descuento debe estar en la misma moneda que
+los flujos. Traxión reporta en pesos mexicanos nominales, así que los
+flujos van en MXN y la tasa que los descuenta también.
+
+
+(a) Directo en pesos: Rf, ERP y prima país estimadas en MXN.
+(b) Construir el costo de capital completo en dólares y convertirlo a pesos con el diferencial de inflación esperada (paridad de Fisher).
+
+**Decisión: ruta (b).**
+
+Razón: los insumos de mayor calidad como ERP implícita, betas sectoriales desapalancados, spreads por rating, primas de riesgo país, están estimados sobre mercados denominados en dólares. Construir en pesos obligaría a improvisar equivalentes locales de peor calidad.
+
+
+**Implicación para el código:** las funciones de costo de capital
+reciben la moneda de trabajo y las inflaciones esperadas como parámetros
+explícitos, de modo que el modelo pueda correrse en ambas monedas y
+compararse.
+
+
+### Datos recolectados
+
+| Dato | Valor | Fuente | Fecha |
+|---|---|---|---|
+| Treasury EE.UU. 10 años | 4.65% | US Treasury, Daily Par Yield Curve | 07/08/2026 |
+| Bono M mexicano (venc. 21/02/36) | 9.12% | Banxico, YTM calculado desde precio | 06/08/2026 |
+| Inflación esperada USD (10 años) | 2.25% | FRED, serie T10YIE | 07/08/2026 |
+| Inflación esperada MXN (5-8 años) | 3.75% | Banxico, Encuesta jul-2026, Cuadro 5 | 03/08/2026 |
+| Spread de default México (rating) | 1.62% | Damodaran, ctryprem (Baa2) | 01/01/2026 |
+| Spread de default México (CDS) | 1.52% | Damodaran, ctryprem (neto de CDS suizo) | 01/01/2026 |
+
+TREASURY ESTADOUNIDENSE 10 AÑOS
+![Curva de rendimientos del Tesoro estadounidense al 07/08/2026](img/treasury_10y_20260807.png)
+https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=2026
+
+M-BONO MXN A 10 AÑOS
+![Vector de precios de Bonos M al 06/08/2026, Banco de México](img/banxico_bonos_m_precios.png)
+Banxico publica precio, no rendimiento. El YTM se calcula desde el precio sucio (96.308857), cupón vigente (8.00%) y plazo residual (3,486 días) del bono con vencimiento 21/02/2036.
+https://www.banxico.org.mx/SieInternet/consultarDirectorioInternetAction.do?accion=consultarCuadro&idCuadro=CF300&sectorDescripcion=Mercado
+VERIFICACIÓN: Cbonds, Mexico 10Y YTM = 9.129% al 07/08/2026
+https://cbonds.com/indexes/24265/
+
+INFLACIÓN ESPERADA A 10 AÑOS USD
+![Serie histórica del breakeven de inflación a 10 años, FRED](img/fred_t10yie_20260807.png)
+2.25% al 07/08/2026
+https://fred.stlouisfed.org/series/T10YIE
+
+INFLACIÓN ESPERADA A 5-8 AÑOS MXN
+![Expectativas de inflación de largo plazo, Encuesta Banxico julio 2026](img/banxico_expectativas_largo_plazo.png)
+Se usa la mediana: 3.75%
+https://www.banxico.org.mx/publicaciones-y-prensa/encuestas-sobre-las-expectativas-de-los-especialis/%7B9A769BA5-F259-4032-8399-BAE68C36ABFA%7D.pdf
+
+Spread de default de Mexico
+DAMODARAN:
+![Fila de México en el dataset de primas de riesgo país de Damodaran](img/damodaran_ctryprem_mexico.png)
+https://pages.stern.nyu.edu/~adamodar/New_Home_Page/datafile/ctryprem.html
+
+### El Bono M: por qué hubo que calcular el rendimiento
+
+Banxico publica **precio**, no rendimiento. Del vector de precios se tomó el Bono M con vencimiento 21/02/2036, que al 06/08/2026 tenía 3,486 días
+residuales (**9.55 años**), el más cercano a diez de los cinco disponibles.
+
+Datos de origen: precio limpio 92.886635, precio sucio 96.308857, cupón vigente 8.00%.
+
+Convención de los Bonos M: cupón cada 182 días, calculado como `tasa × 182/360 × VN`. Con cupón de 8% sobre valor nominal de 100:
+
+    Cupón por período     = 4.044444
+    Cupones restantes     = 20
+    Días al primer cupón  = 28
+
+ **YTM = 9.12%**.
+
+**Verificación:** Cbonds reporta Mexico 10Y YTM en 9.129% al 07/08/2026. Menos de un punto básico de diferencia.
+
+
+### doble conteo
+
+Un bono soberano en moneda local **no es libre de riesgo** si el emisor puede incumplir en su propia moneda. México puede. El rendimiento del Bono M ya trae adentro un spread por ese riesgo.
+
+Usarlo crudo como Rf produce dos errores encadenados: infla la tasa base y, al sumar después la prima de riesgo país, **cuenta el riesgo de México
+dos veces** ,una escondida en el bono, otra explícita en el CRP.
+
+Como se adoptó la ruta (b), la Rf que entra al CAPM es la del Treasury (**4.65%**), limpia por construcción. El Bono M no entra al modelo: se
+usa como verificación.
+
+
+### Verificación cruzada de la tasa libre de riesgo
+
+Se calcula la Rf en pesos por dos caminos independientes:
+
+**(a) Bono M menos spread de default**
+
+    9.12% − 1.62%  ≈  7.50% (rating)
+    9.12% − 1.52%  ≈  7.60% (CDS)
+
+**(b) Treasury convertido con paridad de Fisher**
+
+    Rf_MXN = (1 + Rf_USD) × (1 + inf_MXN) / (1 + inf_USD) − 1
+    Rf_MXN = (1.0465 × 1.0375) / 1.0225 − 1 = 6.183%
+
+**Diferencia entre vías: 132 pb (rating) / 142 pb (CDS).**
+
+Ambas quedan por debajo del umbral de 150 pb que marca la metodología como señal de problema en los insumos de inflación esperada.
+
+Visto de otro modo: el diferencial implícito entre el Bono M y el Treasury convertido es
+
+    (1.0912 / 1.06183) − 1 = 2.77%
+
+contra un spread publicado de 1.62%. La brecha de ~115 pb se explica por tres factores conocidos: la paridad de Fisher nunca se cumple exacta,
+hay diferencias de liquidez y prima por plazo entre los dos mercados, y **el dato de Damodaran tiene fecha de corte 1-ene-2026, siete meses anterior a la valoración**, en un período con choque de energéticos y presión sobre el peso.
+
+La verificación se considera superada.
+
+
+### Decisión: rating vs. CDS
+
+Damodaran ofrece dos vías para el spread soberano. Para México:
+
+| Vía | Spread | CRP | ERP total |
+|---|---|---|---|
+| Rating (Moody's Baa2) | 1.62% | 2.46% | 6.69% |
+| CDS (neto de CDS suizo) | 1.52% | 2.32% | 6.55% |
+
+**Decisión: vía CDS.**
+
+Razón: la metodología de Damodaran suele poner el CDS soberano como vía preferida por ser medida de mercado, actualizada con frecuencia y ya limpia de ruido de base (neto de un soberano de referencia). La vía rating se conserva como verificación; la diferencia es de 14 pb en la ERP total.
+
+**Composición del CRP** (verificada):
+
+    CRP = spread de default × multiplicador de volatilidad relativa
+    1.62% × 1.52 = 2.46%   
+    1.52% × 1.52 = 2.31%   
+
+El multiplicador de 1.52 en el archivo de Damodaran refleja que el mercado accionario es más volátil que el de bonos: el riesgo país pesa más sobre el patrimonio que sobre la deuda.
+
+**Parámetros del archivo:**
+- ERP de mercado maduro: 4.23%
+- Multiplicador de volatilidad relativa: 1.52
+
+
+### Limitaciones declaradas
+
+1. **Desfase de fechas.** Los datos de mercado son de agosto 2026; el dataset de Damodaran es de enero 2026. Es la actualización más reciente publicada (se actualiza una o dos veces al año), pero si el riesgo país de México subió en esos siete meses, el costo de capital está subestimado. sensibilidad.
+
+2. **Plazo del Bono M.** 9.55 años, no 10 exactos.
+
+3. **Horizonte de la inflación esperada MXN.** Se usa el promedio anual de los próximos cinco a ocho años (2031-2034), mediana de 42 analistas. Se descarta deliberadamente el dato de cierre 2026 (3.92%), contaminado por el choque de energéticos, y se prefiere la mediana sobre la media.
+
+
+### Rangos para el Monte Carlo
+
+Anotados desde ya, para posibles usos en Modulos futuros:
+
+| Parámetro | Valor base | Rango observado | Origen del rango |
+|---|---|---|---|
+| Inflación esperada USD | 2.25% | 2.0% - 3.0% | Serie T10YIE, últimos 5 años |
+| Inflación esperada MXN | 3.75% | 3.56% - 3.80% (cuartiles) | Encuesta Banxico, anexo p. 24 |
+| | | 3.00% - 4.20% (extremos) | desv. estándar 0.28 |
+| Spread default México | 1.52% | 1.52% - 1.62% | rating vs. CDS |
+
+
+
 ## 2026 - 07-28 - Decisión del año base
 
 Teniendo en cuenta que toda la valoración crece desde el año base es probablemente el supuesto que más pesa.
@@ -38,7 +216,7 @@ Margen consolidado 6M26: 4.93%, el mismo reportado en "Construcción de los ulti
 
 Decisión del Margen:
 Se adopta el escenario en que movilidad de carga recupera su margen de 7.74%, mientras logística y personas se quedan donde están hoy.
-un segmento no opera indefinidamente en pérdida. Carga cayó por causas identificadas y reversibles —alza del combustible por el conflicto en Medio Oriente, incertidumbre arancelaria, peso fuerte frente a ingresos en dólares. La empresa ya anunció alzas de precios y salida de activos no rentables.
+un segmento no opera indefinidamente en pérdida. Carga cayó por causas identificadas y reversibles como alza del combustible por el conflicto en Medio Oriente, incertidumbre arancelaria, peso fuerte frente a ingresos en dólares. La empresa ya anunció alzas de precios y salida de activos no rentables.
 
 Este supuesto deja un Margen de 6.45% como base.
 
