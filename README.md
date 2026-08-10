@@ -16,6 +16,7 @@ Módulo 2 (costo de capital) en curso.
 - Partidas no recurrentes y normalización del EBIT
 - UDM a junio 2026 y construcción del año base
 - Moneda de trabajo y tasa libre de riesgo
+
 Sigue prima de riesgo de mercado y riesgo país
 
 ## Estructura
