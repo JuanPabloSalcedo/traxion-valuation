@@ -8,6 +8,103 @@ Formato: fecha, qué se encontró o decidió, en qué se basa,
 qué implica para el resto del modelo.
 
 
+## 2026-08-10 - BETA: Definir los comparables
+
+La metodología utilizada será la misma recomendada por Damodaran: Beta ascendente de comparables.
+
+Traxion abarca tres negocios distintos:
+- logistica y tecnologia
+- movilidad de carga
+- movilidad de personas
+
+Dicha metodología exige un beta desapalancado por cada negocio y proceder a ponderar.
+
+Busqueda de empresas comparables:
+
+Logística y tecnología:
+
+Estados Unidos: C.H. Robinson, Expeditors International, Hub Group, Landstar System, GXO Logistics, Forward Air
+Europa: DSV, Kuehne+Nagel, Deutsche Post DHL
+Brasil: Sequoia, Armac
+
+Movilidad de carga
+
+Estados Unidos: J.B. Hunt, Knight-Swift, Werner Enterprises, Schneider National, Heartland Express, Marten Transport, Old Dominion, Saia, XPO
+Brasil: JSL, Simpar, Tegma
+
+Movilidad de personas 
+
+Reino Unido: FirstGroup, Mobico Group 
+Brasil: Movida, Localiza (renta de flota)
+
+Se listan estas posibles empresas como comparables para empezar la busqueda y adecuación. Sin embaergo, el objetivo será contar con 10 o 15 empresas por grupo.
+En el proceso se adjuntaran comparables.csv
+De igual forma, se debe decidir contra qué indice regresar. sp500?. Si se mezclan muchos paises se podría usar un índice global unico.
+
+
+## 2026-08-10 - Corrección de tasa libre de riesgo y elección de ERP
+
+Ke = Rf + β × (ERP madura + CRP)
+
+Se obtuvo: 
+
+Rf (Treasury 10 años) 4.65%	
+ERP madura 4.23%	
+CRP México 2.32%
+
+Sin embargo, hay que hacer ajustes: 
+Para la ERP Damodaran publica cinco estimaciones, veáse:
+
+![Estimaciones de ERP implícita al 1 de agosto de 2026](img/damodaran_erp_implicita_ago2026.png)
+
+El rango va de 3.68% a 6.25%. Rango para MonteCarlo.
+Se usará la de los flujos de los útltimos 12 meses, con el reparto ajustado a niveles sostenibles. Es decir: 4,28%.
+
+Damodaran advierte que Estados Unidos tiene calificación Aa1, no Aaa, lo que implica un spread de default de 0.22%. por eso da una tasa ajustada.
+
+Es el mismo criterio ya aplicado al Bono M mexicano.
+Aplicarlo a México y no a Estados Unidos sería inconsistente.
+
+**Decisión:** se ajusta la tasa propia de la fecha de valoración, no la de Damodaran, para mantener el anclaje temporal ya declarado (7 de agosto).
+
+    Rf ajustada  = 4.65% - 0.22% = 4.43%
+    ERP ajustada = 4.28% + 0.22% = 4.50%
+
+El ajuste traslada el riesgo soberano estadounidense de la tasa base a la prima.
+
+La causa dominante es la fecha: el spread de México es de enero de 2026, siete meses anterior a la valoración, en un período con choque de energéticos y presión sobre el peso. El diferencial implícito calculado con datos de agosto es 2.98%, no 1.52%.
+
+**Verificación alterna con el spread implícito de agosto:**
+
+Bono M - residuo = 9.12% - 2.98% = 6.14%
+Fisher con Rf ajustado = 5.96%
+Diferencia = 18 pb
+
+El problema esta en la antiguedad.
+
+**Diagnóstico de la brecha.** El residuo entre el Bono M y el Treasury convertido es 2.98% con datos de agosto, contra un spread publicado de 1.52% con fecha de enero. Ese residuo no es spread de default puro: contiene también la desviación de la paridad de Fisher y diferencias de liquidez y plazo. nom se toma como estimación.
+
+Lo que sí permite afirmar es que el spread de default de México a la fecha de valoración está acotado entre 1.52% y 2.98%. Rango para MonteCarlo.
+
+### La verificación cruzada ya no pasa el umbral
+
+Rehecha con la Rf ajustada:
+
+    Via (a): Bono M − spread CDS = 9.12% − 1.52% = 7.60%
+    Via (b): Fisher con Rf ajustada = (1.0443 × 1.0375)/1.0225 − 1 = 5.96%
+    Diferencia: 164 puntos
+
+### CRP
+
+La metodologia de Damodaran explica que no todas las empresas de un país están igualmente expuestas a su riesgo. La medida más simple es la proporción de ingresos generados en el país. Sin embarego, ya que la totalidad de los activosde Traxion estan en MExico, y que la empresa concentro a posta su exposición: el 1 de julio de 2025 adquirió Solistica con operaciones en México, Brasil y Colombia, y vendió las dos últimas el mismo día para enfocarse en México.
+
+Se aplica el CRP integro de 2.32%.
+
+            FINALMENTE SE DECIDE:
+
+Ke (en dólares) = 4.43% + β × (4.50% + 2.32%)
+                = 4.43% + β × 6.82%
+
 ## 2026-08-07 - Módulo 2 iniciado: moneda y tasa libre de riesgo
 
 Fuente metodológica: Damodaran, tasa libre de riesgo y consistencia de
@@ -479,7 +576,7 @@ No es comparable ni con 2024 ni con 2026.
 
 La empresa manifiesta que "Solística contribuyó con $3,735,889 de ingresos y aportó una utilidad de operación de $286,567" (seis meses).
 Esto puede permitir construir una serie orgánica y comparable (Traxion sin solistica, 2021-2025)
-Ejemplo: Ingresos 2025 sin Solistica = Ingresos totales 2025 − 3,736
+Ejemplo: Ingresos 2025 sin Solistica = Ingresos totales 2025 - 3,736
 
 Para efectos de valoración lo relevante es que Traxion se quedo solo con Mexico financiado con 1,600 de disposición del crédito sindicado.
 Deuda bancaria.
