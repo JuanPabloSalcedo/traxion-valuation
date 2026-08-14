@@ -16,8 +16,9 @@ Módulo 2 (costo de capital) en curso.
 - Partidas no recurrentes y normalización del EBIT
 - UDM a junio 2026 y construcción del año base
 - Moneda de trabajo y tasa libre de riesgo
+- Prima de riesgo de mercado y riesgo país
 
-Sigue prima de riesgo de mercado y riesgo país
+Sigue beta ascendente con comparables
 
 ## Estructura
 
@@ -46,6 +47,12 @@ Se aísla la contribución de la adquisición para medir el crecimiento real alr
 - **Normalización del EBIT.** Se ubica cada partida no recurrente dentro o debajo de la utilidad de operación antes de ajustarla. Al normalizar, la aparente caída de márgenes de 2024 parece ser un efecto contable de gastos de reestructura.
 
 - **Año base construido, no copiado.** Ningún ejercicio anual representa la empresa actual. El tamaño se toma de los últimos doce meses medidos (jul-2025 a jun-2026, primeros doce meses completos con Solistica) y el margen se decide descomponiendo la rentabilidad por segmento.
+
+- **Construcción en dólares, flujos en pesos.** La tasa de descuento debe estar en la moneda de los flujos, pero se construye en dólares porque los insumos de calidad (ERP implícita, betas sectoriales, spreads por rating) están estimados sobre mercados en dólares. La conversión usa paridad de Fisher. El bono soberano mexicano no se usa como tasa libre de riesgo: no está libre de incumplimiento, y usarlo crudo contaría el riesgo país dos veces.
+
+- **El Treasury tampoco es libre de riesgo.** Estados Unidos tiene calificación Aa1, lo que implica un spread de default de 0.22%. Se ajusta la tasa base y se traslada ese spread a la prima, aplicando a Estados Unidos el mismo criterio que con el bono mexicano.
+
+- **Sector de referencia verificado, no supuesto.** Se descargó el listado de compañías por industria para comprobar qué contiene cada sector en vez de inferirlo del nombre. Resultado: Trucking y Transportation son categorías paralelas y cada segmento de Traxión tiene su propia referencia. La muestra de mercados emergentes se descarta pese a que Traxión es mexicana: su R² de 1.5% y un D/E implícito de 170% indican betas sesgados por iliquidez, y el riesgo país ya entró por la prima.
 
 
 ## Instalación
