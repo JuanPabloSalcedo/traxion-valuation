@@ -126,3 +126,22 @@ Parámetros de mercado a la fecha de valoración (2026-08-07). Cada dato con su 
 | Gráficas 4 y 5, expectativas de largo plazo | 7 |
 | Cuadro 10, expectativas Bono M a 10 años | 12 |
 | Anexo, estadísticas básicas de inflación de largo plazo | 24 |
+
+
+## Archivos de Damodaran
+
+| Archivo | Contenido | Fecha de corte |
+|---|---|---|
+| damodaran_ctryprem_ene2026.xls | Country Default Spreads and Risk Premiums | 2026-01-01 |
+| damodaran_betas_sector_us_ene2026.xls | Betas by Sector, EE.UU. | 2026-01-01 |
+| damodaran_betas_sector_global_ene2026.xls | Betas by Sector, global | 2026-01-01 |
+| damodaran_betas_sector_emergentes_ene2026.xls | Betas by Sector, mercados emergentes | 2026-01-01 |
+| damodaran_industry_company_listing_ene2026.xls | Industry Name and Global Company Listing | 2026-01-01 |
+
+## Datos derivados
+
+| Archivo | Contenido |
+|---|---|
+| data/interim/traxion_anual.csv | Serie 2021-2025 más UDM a jun-2026, transcrita de los reportes |
+| data/interim/universo_comparables.csv | 153 empresas de Trucking y Transportation, extraídas del listado de Damodaran |
+| data/interim/comparables.csv | Selección final de comparables con segmento asignado y verificación de negocio |

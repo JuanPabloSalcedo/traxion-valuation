@@ -1,0 +1,154 @@
+ticker,nombre,pais,sector_damodaran,grupo
+ASX:CLX,CTI Logistics Limited,Australia,Transportation,"Australia, NZ and Canada"
+ASX:CHL,Camplify Holdings Limited,Australia,Transportation,"Australia, NZ and Canada"
+NasdaqCM:GVH,Globavend Holdings Limited,Australia,Transportation,"Australia, NZ and Canada"
+ASX:KSC,K&S Corporation Limited,Australia,Transportation,"Australia, NZ and Canada"
+ASX:KLS,Kelsian Group Limited,Australia,Transportation,"Australia, NZ and Canada"
+ASX:SRH,Saferoads Holdings Limited,Australia,Transportation,"Australia, NZ and Canada"
+ASX:WWG,Wiseway Group Limited,Australia,Transportation,"Australia, NZ and Canada"
+ENXTBR:BPOST,bpost NV/SA,Belgium,Transportation,Developed Europe
+BOVESPA:ECOR3,EcoRodovias Infraestrutura e Logística S.A.,Brazil,Transportation,Emerging Markets
+BOVESPA:RENT3,Localiza Rent a Car S.A.,Brazil,Transportation,Emerging Markets
+BOVESPA:MOTV3,Motiva Infraestrutura de Mobilidade S.A.,Brazil,Transportation,Emerging Markets
+BOVESPA:MOVI3,Movida Participações S.A.,Brazil,Transportation,Emerging Markets
+BOVESPA:SEQL3,Sequoia Logística e Transportes S.A.,Brazil,Transportation,Emerging Markets
+BOVESPA:TPIS3,Triunfo Participações e Investimentos S.A.,Brazil,Transportation,Emerging Markets
+TSXV:ARGH,Argo Corporation,Canada,Transportation,"Australia, NZ and Canada"
+TSX:CJT,Cargojet Inc.,Canada,Transportation,"Australia, NZ and Canada"
+TSX:TTNM,Titanium Transportation Group Inc.,Canada,Transportation,"Australia, NZ and Canada"
+CPSE:DSV,DSV A/S,Denmark,Transportation,Developed Europe
+CPSE:OKEAC,Det Østasiatiske Kompagni A/S,Denmark,Transportation,Developed Europe
+CPSE:DONKEY,DonkeyRepublic Holding A/S,Denmark,Transportation,Developed Europe
+CPSE:GREENM,GreenMobility A/S,Denmark,Transportation,Developed Europe
+HLSE:NLG1V,Nurminen Logistics Oyj,Finland,Transportation,Developed Europe
+HLSE:POSTI,Posti Group Oyj,Finland,Transportation,Developed Europe
+ENXTPA:AYV,Ayvens,France,Transportation,Developed Europe
+ENXTPA:ODET,Compagnie de l'Odet,France,Transportation,Developed Europe
+ENXTPA:GET,Getlink SE,France,Transportation,Developed Europe
+ENXTPA:IDL,ID Logistics Group SA,France,Transportation,Developed Europe
+ENXTPA:ALGIR,Signaux Girod S.A.,France,Transportation,Developed Europe
+ENXTPA:ALTPC,Société Marseillaise du Tunnel Prado Carénage,France,Transportation,Developed Europe
+ENXTPA:ALTOO,Toosla Société Anonyme,France,Transportation,Developed Europe
+DB:LNSX,Allane SE,Germany,Transportation,Developed Europe
+HMSE:DE10,Deufol SE,Germany,Transportation,Developed Europe
+XTRA:DHL,Deutsche Post AG,Germany,Transportation,Developed Europe
+XTRA:MLL,Müller - Die lila Logistik SE,Germany,Transportation,Developed Europe
+XTRA:SIX2,Sixt SE,Germany,Transportation,Developed Europe
+DB:HVB,ÜSTRA Hannoversche Verkehrsbetriebe Aktiengesellschaft,Germany,Transportation,Developed Europe
+BIT:ALA,A.L.A. società per azioni,Italy,Transportation,Developed Europe
+BIT:AUTME,Autostrade Meridionali S.p.A.,Italy,Transportation,Developed Europe
+BIT:FCH,Franchetti S.p.A.,Italy,Transportation,Developed Europe
+BIT:SBC,Sicily by Car S.p.A.,Italy,Transportation,Developed Europe
+TSE:9381,AIT Corporation,Japan,Transportation,Japan
+TSE:9090,AZ-COM MARUWA Holdings Inc.,Japan,Transportation,Japan
+TSE:9145,"Being Holdings Co., Ltd.",Japan,Transportation,Japan
+TSE:9319,"Chuo Warehouse Co.,Ltd.",Japan,Transportation,Japan
+FKSE:9035,"Daiichi Koutsu Sangyo Co.,Ltd.",Japan,Transportation,Japan
+TSE:9082,"Daiwa Motor Transportation Co., Ltd.",Japan,Transportation,Japan
+TSE:9037,"Hamakyorex Co., Ltd.",Japan,Transportation,Japan
+TSE:9033,"Hiroshima Electric Railway Co.,Ltd.",Japan,Transportation,Japan
+SPSE:9085,"Hokkaido Chuo Bus Co., Ltd.",Japan,Transportation,Japan
+TSE:9619,"Ichinen Holdings Co.,Ltd.",Japan,Transportation,Japan
+TSE:9369,K.R.S. Corporation,Japan,Transportation,Japan
+TSE:9081,"Kanagawa Chuo Kotsu Co., Ltd.",Japan,Transportation,Japan
+TSE:9326,"Kantsu Co.,Ltd.",Japan,Transportation,Japan
+TSE:9025,"Konoike Transport Co.,Ltd.",Japan,Transportation,Japan
+SPSE:9027,"Loginet Japan Co., Ltd.",Japan,Transportation,Japan
+TSE:9302,"MITSUI-SOKO HOLDINGS Co., Ltd.",Japan,Transportation,Japan
+TSE:9017,"Niigata Kotsu Co., Ltd.",Japan,Transportation,Japan
+TSE:9147,"Nippon Express Holdings, Inc.",Japan,Transportation,Japan
+TSE:9325,PHYZ Holdings Inc.,Japan,Transportation,Japan
+TSE:2384,"SBS Holdings, Inc.",Japan,Transportation,Japan
+TSE:9069,"SENKO Group Holdings Co., Ltd.",Japan,Transportation,Japan
+TSE:9143,"SG Holdings Co.,Ltd.",Japan,Transportation,Japan
+TSE:9065,Sankyu Inc.,Japan,Transportation,Japan
+TSE:9052,"Sanyo Electric Railway Co.,Ltd.",Japan,Transportation,Japan
+TSE:9304,Shibusawa Logistics Corporation,Japan,Transportation,Japan
+TSE:9083,"Shinki Bus Co.,Ltd.",Japan,Transportation,Japan
+TSE:9087,Takase Corporation,Japan,Transportation,Japan
+TSE:9312,"The Keihin Co., Ltd.",Japan,Transportation,Japan
+TSE:9064,"Yamato Holdings Co., Ltd.",Japan,Transportation,Japan
+TSE:9324,Yasuda Logistics Corporation,Japan,Transportation,Japan
+TSE:9327,"e-LogiT co.,ltd.",Japan,Transportation,Japan
+NasdaqCM:FRGT,"Freight Technologies, Inc.",Mexico,Transportation,Emerging Markets
+BMV:PINFRA *,"Promotora y Operadora de Infraestructura, S. A. B. de C. V.",Mexico,Transportation,Emerging Markets
+ENXTAM:PNL,PostNL N.V.,Netherlands,Transportation,Developed Europe
+NZSE:FRW,Freightways Group Limited,New Zealand,Transportation,"Australia, NZ and Canada"
+NZSE:MOV,MOVE Logistics Group Limited,New Zealand,Transportation,"Australia, NZ and Canada"
+NZSE:MFT,Mainfreight Limited,New Zealand,Transportation,"Australia, NZ and Canada"
+NZSE:THL,Tourism Holdings Limited,New Zealand,Transportation,"Australia, NZ and Canada"
+BME:ALQ,"Alquiber Quality, S.A.",Spain,Transportation,Developed Europe
+NasdaqCM:CRGO,Freightos Limited,Spain,Transportation,Developed Europe
+BME:LOG,"Logista Integral, S.A.",Spain,Transportation,Developed Europe
+OM:ELAN B,Elanders AB,Sweden,Transportation,Developed Europe
+XSAT:MBBAB,MoveByBike Europe AB,Sweden,Transportation,Developed Europe
+OM:RAIL,Railcare Group AB,Sweden,Transportation,Developed Europe
+ENXTAM:FERGR,Ferrari Group PLC,United Kingdom,Transportation,Developed Europe
+LSE:MCG,Mobico Group Plc,United Kingdom,Transportation,Developed Europe
+LSE:ZIG,Zigup Plc,United Kingdom,Transportation,Developed Europe
+NasdaqCM:AIRT,"Air T, Inc.",United States,Transportation,United States
+NasdaqGM:ARAI,Arrive AI Inc.,United States,Transportation,United States
+NasdaqGS:CAR,"Avis Budget Group, Inc.",United States,Transportation,United States
+NasdaqGS:CHRW,"C.H. Robinson Worldwide, Inc.",United States,Transportation,United States
+NasdaqCM:CJMB,Callan JMB Inc.,United States,Transportation,United States
+NYSE:EXPD,"Expeditors International of Washington, Inc.",United States,Transportation,United States
+NYSE:FDX,FedEx Corporation,United States,Transportation,United States
+NasdaqGS:FWRD,Forward Air Corporation,United States,Transportation,United States
+NYSE:GXO,"GXO Logistics, Inc.",United States,Transportation,United States
+NasdaqGS:HTZ,"Hertz Global Holdings, Inc.",United States,Transportation,United States
+NasdaqGS:HUBG,"Hub Group, Inc.",United States,Transportation,United States
+NasdaqGS:LYFT,"Lyft, Inc.",United States,Transportation,United States
+NYSEAM:RLGT,"Radiant Logistics, Inc.",United States,Transportation,United States
+NYSE:UBER,"Uber Technologies, Inc.",United States,Transportation,United States
+NYSE:UPS,"United Parcel Service, Inc.",United States,Transportation,United States
+ASX:LAU,Lindsay Australia Limited,Australia,Trucking,"Australia, NZ and Canada"
+BOVESPA:JSLG3,JSL S.A.,Brazil,Trucking,Emerging Markets
+BOVESPA:SIMH3,SIMPAR S.A.,Brazil,Trucking,Emerging Markets
+BOVESPA:TGMA3,Tegma Gestão Logística S.A.,Brazil,Trucking,Emerging Markets
+BOVESPA:VAMO3,"Vamos Locação de Caminhões, Máquinas e Equipamentos S.A.",Brazil,Trucking,Emerging Markets
+TSXV:MBO,Mobio Technologies Inc.,Canada,Trucking,"Australia, NZ and Canada"
+TSX:MTL,Mullen Group Ltd.,Canada,Trucking,"Australia, NZ and Canada"
+TSX:TFII,TFI International Inc.,Canada,Trucking,"Australia, NZ and Canada"
+XSAT:FREETR,Freetrailer Group A/S,Denmark,Trucking,Developed Europe
+CPSE:NTG,NTG Nordic Transport Group A/S,Denmark,Trucking,Developed Europe
+ENXTPA:STF,STEF SA,France,Trucking,Developed Europe
+BIT:LDB,Lindbergh S.p.A.,Italy,Trucking,Developed Europe
+TSE:9057,"Enshu Truck Co.,Ltd.",Japan,Trucking,Japan
+TSE:9075,"Fukuyama Transporting Co., Ltd.",Japan,Trucking,Japan
+TSE:9029,"Higashi Holdings Co., Ltd.",Japan,Trucking,Japan
+TSE:9060,Japan Logistic Systems Corp.,Japan,Trucking,Japan
+TSE:9059,"Kanda Holdings Co.,Ltd.",Japan,Trucking,Japan
+TSE:9073,"Kyogoku unyu shoji Co., Ltd.",Japan,Trucking,Japan
+TSE:9067,Maruwn Corporation,Japan,Trucking,Japan
+TSE:9068,"Maruzen Showa Unyu Co., Ltd.",Japan,Trucking,Japan
+TSE:9034,"NANSO Transport Co.,Ltd.",Japan,Trucking,Japan
+TSE:9072,"NIKKON Holdings Co.,Ltd.",Japan,Trucking,Japan
+TSE:9063,"Okayamaken Freight Transportation Co., Ltd.",Japan,Trucking,Japan
+TSE:9039,"Sakai Moving Service Co.,Ltd.",Japan,Trucking,Japan
+TSE:9076,"Seino Holdings Co., Ltd.",Japan,Trucking,Japan
+TSE:9051,"Senkon Logistics Co., Ltd.",Japan,Trucking,Japan
+NSE:9040,"Taiho Transportation Co., Ltd.",Japan,Trucking,Japan
+TSE:9036,"Tohbu Network Co., Ltd.",Japan,Trucking,Japan
+TSE:9028,"ZERO Co., Ltd.",Japan,Trucking,Japan
+BMV:TRAXION A,"Grupo Traxión, S.A.B. de C.V.",Mexico,Trucking,Emerging Markets
+NasdaqGS:ARCB,ArcBest Corporation,United States,Trucking,United States
+NasdaqGM:BTOC,Armlogi Holding Corp.,United States,Trucking,United States
+NYSE:CVLG,"Covenant Logistics Group, Inc.",United States,Trucking,United States
+NasdaqCM:ETS,Elite Express Holding Inc.,United States,Trucking,United States
+NasdaqGS:HTLD,"Heartland Express, Inc.",United States,Trucking,United States
+NasdaqGS:JBHT,"J.B. Hunt Transport Services, Inc.",United States,Trucking,United States
+NYSE:KNX,Knight-Swift Transportation Holdings Inc.,United States,Trucking,United States
+NasdaqGS:LSTR,"Landstar System, Inc.",United States,Trucking,United States
+NasdaqGS:MRTN,"Marten Transport, Ltd.",United States,Trucking,United States
+NasdaqGS:ODFL,"Old Dominion Freight Line, Inc.",United States,Trucking,United States
+NasdaqGM:PAMT,Pamt Corp.,United States,Trucking,United States
+NasdaqGS:PAL,"Proficient Auto Logistics, Inc.",United States,Trucking,United States
+NYSE:RXO,"RXO, Inc.",United States,Trucking,United States
+NYSE:R,"Ryder System, Inc.",United States,Trucking,United States
+NasdaqGS:SAIA,"Saia, Inc.",United States,Trucking,United States
+NYSE:SNDR,"Schneider National, Inc.",United States,Trucking,United States
+NYSEAM:TOPP,Toppoint Holdings Inc.,United States,Trucking,United States
+NYSE:UHAL,U-Haul Holding Company,United States,Trucking,United States
+NasdaqGS:ULH,"Universal Logistics Holdings, Inc.",United States,Trucking,United States
+NasdaqGS:WERN,"Werner Enterprises, Inc.",United States,Trucking,United States
+NYSE:XPO,"XPO, Inc.",United States,Trucking,United States

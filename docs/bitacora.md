@@ -4,8 +4,157 @@ Registro de hallazgos, criterios aplicados y decisiones de modelación.
 
 Orden cronológico inverso: la entrada más reciente primero.
 
-Formato: fecha, qué se encontró o decidió, en qué se basa,
-qué implica para el resto del modelo.
+Formato: fecha, qué se encontró o decidió, en qué se basa, qué implica para el resto del modelo.
+
+
+## 2026-08-14 - Beta ascendente: sectores de referencia, decisiones y universo de comparables
+
+Traxion cotiza, por lo que cuenta con un beta de regresión propio. No se usa como insumo por el error estandar naturalmente alto de una sola regresión. Ek promedio de muchas regresiones comparables reduce ese error con $\sqrt{n}$.
+
+El beta de regresión de Traxion se calculará como contraste.
+
+Traxion opera tres negocios:
+
+Logistica y tecnología
+Movilidad de carga
+Movilidad de personas
+
+Segun 6M26 en traxion_2T26_trimestral.pdf, el peso en los ingresos es de: 
+
+Logistica y tecnología: 9073/18408 = 49.29%
+Movilidad de carga: 3679/18408 = 19.9%
+Movilidad de personas: 5656/18408 = 30.7%
+Se usa esta mezcla de 6M26 ya que la empresa hacia adelante se parece más al semestre más reciente que al promedio del ultimo año, y dicha mezcla se esta moviendo hacia logistica.
+
+El metodo ascendente estandar: desapalancar por negocio y ponderar.
+
+Se hará busqueda global, pues el riesgo país de Mexico ya entró por el CRP de 2.32%; buscar comparables mexicanas lo contaría dos veces.
+
+### Verificación de betas sectoriales:
+
+Archivos descargados en dataraw:
+
+- `damodaran_betas_sector_us_ene2026.xls`
+- `damodaran_betas_sector_global_ene2026.xls`
+- `damodaran_betas_sector_emergentes_ene2026.xls`
+- `damodaran_industry_company_listing_ene2026.xls`
+
+**Muestra de EE.UU / Trucking**
+
+![Beta sectorial de Trucking, muestra de EE.UU.](img/damodaran_beta_trucking_us.png)
+
+**Muestra Global / Trucking**
+
+![Beta sectorial de Trucking, muestra global](img/damodaran_beta_trucking_global.png)
+
+**Muestra de Emergentes / Trucking**
+
+![Beta sectorial de Trucking, mercados emergentes](img/damodaran_beta_trucking_emergentes.png)
+
+**Muestra de EE.UU / Transportation**
+
+![Beta sectorial de Transportation, muestra de EE.UU.](img/damodaran_beta_transportation_us.png)
+
+**Muestra Global / Transportation**
+
+![Beta sectorial de Transportation, muestra global](img/damodaran_beta_transportation_global.png)
+
+**Muestra Global / Auto y Truck**
+
+![Beta sectorial de Auto & Truck, muestra global](img/damodaran_beta_autotruck_global.png)
+
+
+| Sector | Muestra | Empresas | Beta desapalancado | Beta apalancado | Correlación | Beta total desapalancado |
+|---|---|---|---|---|---|---|
+| Trucking | EE.UU | 26 | 0.87 | 1.01 | 36.24% | 2.40 |
+| Trucking | Global | 130 | 0.68 | 0.85 | 19.56% | 3.46 |
+| Trucking | Emergentes | 76 | 0.37 | 0.81 | 12.36% | 2.98 |
+| Transportation | EE.UU | 19 | 0.71 | 0.86 | 32.27% | 2.20 |
+| Transportation | Global | 451 | 0.75 | 0.96 | 16.94% | 4.41 |
+| Auto y Truck | Global | 165 | 1.15 | 1.41 | 20.49% | 5.59 |
+
+### Verificación del contenido de cada sector
+
+La descarga de `damodaran_industry_company_listing_ene2026.xls` responde a verificar el listado de compañias por industria. En lugar de suponerlo por el nombre.
+
+Trucking es homogeneo, autotransporte terrestre.
+Transportation es mixto: Incluye renta de autos e incluso tambien plataformas tecnologicas como Uber, Lyft, etc.
+
+Un hecho importante es que Damodaran clasifica a Traxion en Trucking:
+
+![Grupo Traxión clasificado en el sector Trucking, listado de compañías por industria](img/damodaran_traxion_clasificada_trucking.png)
+
+
+**Decisión**
+
+Movilidad de carga: Trucking
+Logistica y tecnología: Transportation
+Movilidad de personas: Ninguno exacto, Transportation puede ser la referencia ya que aca estan clasificados los operadores de transporte de pasajeros identificados como Kelsian, Mobico, etc. Sin embargo, es una referencia debil pues, como se menciono anteriormente, el beta del sector esta contaminado por que sale de un promedio que incluye plataformas como Uber y otras, las cuales no se parecen a transporte bajo contrato.
+El beta de este segmento tendrá más incertidumbre que los otros, candidato para sensibilidad.
+
+Sectores descartados: Auto y Truck que son fabricantes de vehiculos; Air Transport, ya que Traxion no opera transporte aereo; Transportation (Railroads), negocio regulado y perfil muy distinto.
+
+### Elección de la muestra: EE.UU
+
+El $\beta$ desapalancado de Trucking varia de 0.37 a 0.87 según región. Diferencia explicada en parte por la calidad estadistica de la muestra:
+
+Trucking EE.UU: 
+Correlación = 36.24%
+R2 implicito = 0.3624*0.3624 = 0.1313 = 13.1%
+D/E implicito = (Beta apalancado / Beta desapalancado -1) / (1-t) = (1.01 / 0.87 - 1) / (1-0.25) = 21.5%  (asumiendo una tasa marginal de 25% para global y EE.UU, y 30% para emergentes)
+
+Trucking Global:
+Correlación = 19.56%
+R2 = 3.8%
+D/E = 33.3%
+
+Trucking Emergentes:
+Correlación = 12.36%
+R2 = 1.5%
+D/E = 169.9%
+
+Tras esto, la referencia principal sera la de Trucking de EE.UU de un $\beta$ desapalancado de **0.87**.
+Como referencia secundaria Trucking global de 0.68.
+El $\beta$ ascendente propio que se construya deberia estar cerca a 0.68 y 0.87.
+
+Se descarta Emergentes a pesar de que Traxion es Mexicana. Como se menciono anteriormente, el riesgo país ya entro por el CRP; el R2 de 1.5% significa que el mercado explica apenas el 1.5% de la variación, y el D/E implicito es demasiado alto con deuda de casi el doble del patrimonio, contra un 21% en EE.UU.
+
+El promedio ponderado de los tres negocios de Traxion puede diferir legitimamente del sectorial. La verificación es de maginitud.
+
+### Universo
+
+Del archivo `damodaran_industry_company_listing_ene2026.xls` se extrajo el universo de partida: 153 empresas en Trucking y Transportation, exluyendo 15 empresas que cotizan en mercado extrabursatil.
+
+Guardado en data/interim/universo_comparables.csv
+
+| Sector | Empresas | Mercados principales |
+|---|---|---|
+| Trucking | 51 | EE.UU 21, Japón 17, Brasil 4, Canada 3 |
+| Transportation | 102 | Japón 31, EE.UU 15, Australia 7, Francia 7, Brasil 6 |
+
+Criterio para incluir una empresa en la selección final:
+
+1. Liquidez razonable
+2. Negocio principal comparable
+3. Al menos 3 años de historia de precios para las regresiones
+4. Estados financieros accesibles, pues se necesita para desapalancar
+
+Al menos 10 empresas de calidad por grupo. El grupo de movilidad de personas probablemente no alcance a las 10.
+
+De la lista preliminar de candidatos en 2026-08-10 se confirman los siguientes:
+
+Trucking: Landstar, Werner, Heartland, Old Dominion, Saia, J.B. Hunt, Knight-Swift, Schneider, XPO, Marten, ArcBest, Ryder, RXO, Covenant, Universal Logistics (EE.UU.); JSL, Simpar, Tegma, Vamos (Brasil); TFI International, Mullen Group (Canadá); NTG Nordic Transport (Dinamarca); STEF (Francia); Lindsay Australia.
+
+Transportation: C.H. Robinson, Expeditors, GXO, Hub Group, Forward Air, FedEx, UPS, Radiant Logistics (EE.UU.); DSV (Dinamarca, CPSE:DSV); Deutsche Post (Alemania); ID Logistics (Francia); Mobico Group (Reino Unido); Mainfreight, Freightways (Nueva Zelanda); Localiza, Movida, Sequoia (Brasil).
+
+Hallazgo para el grupo de movilidad de personas. El listado japonés de Transportation incluye operadores de autobuses: Hokkaido Chuo Bus, Shinki Bus, Kanagawa Chuo Kotsu, Niigata Kotsu, Daiichi Koutsu Sangyo. También Kelsian Group (Australia), que opera autobuses bajo contrato. Son los comparables más cercanos encontrados hasta ahora para ese segmento
+
+Nota: comparables.csv sera para la selección final con la verificación de negocio.
+
+**Decisión del indice de regresión**
+
+Se utilizará un índice global unico como MSCI World para todas. Coherente con ivnersionista con diversificación geografica.
+Las correlaciones deberían subir respecto a las de Damodaran.
 
 
 ## 2026-08-10 - BETA: Definir los comparables
@@ -44,7 +193,7 @@ De igual forma, se debe decidir contra qué indice regresar. sp500?. Si se mezcl
 
 ## 2026-08-10 - Corrección de tasa libre de riesgo y elección de ERP
 
-Ke = Rf + β × (ERP madura + CRP)
+Ke = Rf + $\beta$ * (ERP madura + CRP)
 
 Se obtuvo: 
 
@@ -91,7 +240,7 @@ Lo que sí permite afirmar es que el spread de default de México a la fecha de 
 Rehecha con la Rf ajustada:
 
     Via (a): Bono M − spread CDS = 9.12% − 1.52% = 7.60%
-    Via (b): Fisher con Rf ajustada = (1.0443 × 1.0375)/1.0225 − 1 = 5.96%
+    Via (b): Fisher con Rf ajustada = (1.0443 * 1.0375)/1.0225 − 1 = 5.96%
     Diferencia: 164 puntos
 
 ### CRP
@@ -102,8 +251,8 @@ Se aplica el CRP integro de 2.32%.
 
             FINALMENTE SE DECIDE:
 
-Ke (en dólares) = 4.43% + β × (4.50% + 2.32%)
-                = 4.43% + β × 6.82%
+Ke (en dólares) = 4.43% + $\beta$ * (4.50% + 2.32%)
+                = 4.43% + $\beta$ * 6.82%
 
 ## 2026-08-07 - Módulo 2 iniciado: moneda y tasa libre de riesgo
 
@@ -184,7 +333,7 @@ residuales (**9.55 años**), el más cercano a diez de los cinco disponibles.
 
 Datos de origen: precio limpio 92.886635, precio sucio 96.308857, cupón vigente 8.00%.
 
-Convención de los Bonos M: cupón cada 182 días, calculado como `tasa × 182/360 × VN`. Con cupón de 8% sobre valor nominal de 100:
+Convención de los Bonos M: cupón cada 182 días, calculado como `tasa * 182/360 * VN`. Con cupón de 8% sobre valor nominal de 100:
 
     Cupón por período     = 4.044444
     Cupones restantes     = 20
@@ -217,8 +366,8 @@ Se calcula la Rf en pesos por dos caminos independientes:
 
 **(b) Treasury convertido con paridad de Fisher**
 
-    Rf_MXN = (1 + Rf_USD) × (1 + inf_MXN) / (1 + inf_USD) − 1
-    Rf_MXN = (1.0465 × 1.0375) / 1.0225 − 1 = 6.183%
+    Rf_MXN = (1 + Rf_USD) * (1 + inf_MXN) / (1 + inf_USD) − 1
+    Rf_MXN = (1.0465 * 1.0375) / 1.0225 − 1 = 6.183%
 
 **Diferencia entre vías: 132 pb (rating) / 142 pb (CDS).**
 
@@ -249,9 +398,9 @@ Razón: la metodología de Damodaran suele poner el CDS soberano como vía prefe
 
 **Composición del CRP** (verificada):
 
-    CRP = spread de default × multiplicador de volatilidad relativa
-    1.62% × 1.52 = 2.46%   
-    1.52% × 1.52 = 2.31%   
+    CRP = spread de default * multiplicador de volatilidad relativa
+    1.62% * 1.52 = 2.46%   
+    1.52% * 1.52 = 2.31%   
 
 El multiplicador de 1.52 en el archivo de Damodaran refleja que el mercado accionario es más volátil que el de bonos: el riesgo país pesa más sobre el patrimonio que sobre la deuda.
 
@@ -321,7 +470,7 @@ Este supuesto deja un Margen de 6.45% como base.
 
 Ingresos base: 38082.2
 Margen operativo supuesto: 6.45%
-EBIT base: 38,082.2 × 6.45% = 2,456.3
+EBIT base: 38,082.2 * 6.45% = 2,456.3
 
 
 ## 2026-07-28 - Construcción de los ultimos doce meses a junio 2026
