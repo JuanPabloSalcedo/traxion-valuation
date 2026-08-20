@@ -1,1 +1,92 @@
-ticker,nombre,pais,bolsa,segmento,incluida,pct_ingresos_negocio,notas
+ticker,nombre,pais,bolsa,sector_damodaran,segmento,incluida,pct_ingresos_negocio,notas
+ARCB,ArcBest Corporation,United States,NasdaqGS,Trucking,carga,si,68,Los ingresos asset-based representan el 68% de los mismos y Asset-light el resto. Es una hibrida como Traxion. Fuente: sec.gov 10-K FY2025
+BTOC,Armlogi Holding Corp,United States,NasdaqGM,Trucking,,no,,IPO 2024 sin 3 años de historia
+CVLG,Covenant Logistics Group,United States,NYSE,Trucking,carga,si,63,Expedited 29.95% y Dedicated 33.47% con activos propios suman 63.4%. Managed Freight 27.08% y Warehousing 9.44% asset-light suman 36.5%. Porcentajes sobre freight revenue (neto de recargo de combustible). Hibrida como Traxion. Fuente: sec.gov 10-K FY2025
+ETS,Elite Express Holding,United States,NasdaqCM,Trucking,,no,,Sin historia suficiente
+HTLD,Heartland Express,United States,NasdaqGS,Trucking,carga,si,100,Truckload
+JBHT,J.B. Hunt Transport Services,United States,NasdaqGS,Trucking,carga,si,91,Operacion con activos propios 90.8%: intermodal 49.7% dedicado 28.1% ultima milla 6.9% truckload 6.1%. Fuente: sec.gov 10-K FY2025
+KNX,Knight-Swift Transportation,United States,NYSE,Trucking,carga,si,85,Truckload 65.1% y LTL 19.8% con activos propios. Logistics asset-light solo 7.6%. Intermodal 4.9%. Fuente: sec.gov 10-K FY2025
+LSTR,Landstar System,United States,NasdaqGS,Trucking,logistica,si,100,Modelo asset-light con red de agentes
+MRTN,Marten Transport,United States,NasdaqGS,Trucking,carga,si,100,Truckload refrigerado
+ODFL,Old Dominion Freight Line,United States,NasdaqGS,Trucking,carga,si,100,LTL 
+PAMT,PAMT Corp,United States,NasdaqGM,Trucking,,no,,liquidez insuficiente: spread bid-ask de 12.84 a 14.11 sobre precio de 11.85 equivale a casi 10% y volumen promedio de 21148 acciones (250 mil USD diarios) al 20/08/2026. Capitalizacion 248 MUSD y EPS negativo. La negociacion delgada sesga el beta a la baja. Verificado en Yahoo Finance
+PAL,Proficient Auto Logistics,United States,NasdaqGS,Trucking,,no,,Transporte de vehiculos. sin 3 años de historia
+RXO,RXO Inc,United States,NYSE,Trucking,logistica,si,100,Historia de 3 años y pocos meses (yahoo finance) pasa los 3 años pero se debe excluir si se opta por minimo 5 años. Un solo segmento (sec.gov 10-K FY2025)
+R,Ryder System,United States,NYSE,Trucking,,no,,Tres negocios sin dominancia: Fleet Management 46.2% (arrendamiento de vehiculos con mantenimiento) Supply Chain 43.1% (logistica por contrato) y Dedicated Transportation 18.5% (flota con conductores bajo contrato). El segmento comparable a movilidad de personas es el menor. Ninguno supera 50%. Fuente: sec.gov 10-K FY2025
+SAIA,Saia Inc,United States,NasdaqGS,Trucking,carga,si,100,LTL 
+SNDR,Schneider National,United States,NYSE,Trucking,carga,si,75,Truckload 52.6% e Intermodal 22.9% con activos propios. Logistics asset-light 24.5%. Porcentaje sobre total de segmentos de 5463.1 MUSD: si se incluye la linea Other revenues de 392.6 el porcentaje baja a 70.4%. Fuente: sec.gov 10-K FY2025
+TOPP,Toppoint Holdings,United States,NYSEAM,Trucking,,no,,Micro-cap reciente
+UHAL,U-Haul Holding Company,United States,NYSE,Trucking,,no,,Renta de equipo de mudanza al consumidor y autoalmacenaje. No es prestador de servicios de transporte
+WERN,Werner Enterprises,United States,NasdaqGS,Trucking,carga,si,69,Truckload Transportation Services 69.0% con activos propios y Werner Logistics 28.8% asset-light. Hibrida como Traxion. Fuente: 10-K FY2025 
+AIRT,Air T Inc,United States,NasdaqCM,Transportation,,no,,Transporte aereo y equipo terrestre. Conglomerado pequeÑo
+ARAI,Arrive AI Inc,United States,NasdaqGM,Transportation,,no,,De 2025 sin historia
+CAR,Avis Budget Group,United States,NasdaqGS,Transportation,,no,,Renta de autos al consumidor sin operacion
+CHRW,C.H. Robinson Worldwide,United States,NasdaqGS,Transportation,logistica,si,91,Transportation 91.3% (brokerage de carga y forwarding asset-light) y Sourcing 8.7% (comercializacion de productos frescos). Fuente: 10-K FY2025 resultados de operacion
+CJMB,Callan JMB Inc,United States,NasdaqCM,Transportation,,no,,Micro-cap de cadena de frio. DE 2025 sin historia
+ULH,Universal Logistics Holdings,United States,NasdaqGS,Trucking,logistica,si,67,Contract logistics 67.3% intermodal 16.5% y trucking 16.1%. Damodaran la clasifica en Trucking pero el transporte con activos propios es solo 32.6%. La mezcla migro de 49.9% logistica en 2023 a 67.3% en 2025: el beta de la ventana mide un negocio en transicion. Fuente: 10-K FY2025
+FDX,FedEx Corporation,United States,NYSE,Transportation,,no,,Federal Express (paqueteria express con red aerea global) 86.7% de ingresos y FedEx Freight (LTL) solo 9.3%. Ingresos por segmento derivados de utilidad operativa sobre margen operativo. El segmento comparable es marginal y el dominante opera una flota de aviones sin equivalente en Traxion. Fuente: 10-K FY2025
+GXO,GXO Logistics,United States,NYSE,Transportation,logistica,si,100,Logistica por contrato y almacenaje puro sin otros segmentos. primera cotizacion 22-jul-2021 segun Yahoo Historical Data. Historia de 5 años y 1 mes: alcanza para ventana de 5 aÑos por un margen de un mes
+HTZ,Hertz Global Holdings,United States,NasdaqGS,Transportation,,no,,Renta de autos al consumidor sin operacion
+LYFT,Lyft Inc,United States,NasdaqGS,Transportation,,no,,Plataforma tecnologica de movilidad. No opera flota propia
+RLGT,Radiant Logistics,United States,NYSEAM,Transportation,logistica,si,100,. Año fiscal cierra 30-jun: el 10-K mas reciente. Liquidez verificada: spread bid-ask de 0.23% con profundidad de 50 mil acciones por lado y volumen promedio de 139064. Capitalizacion 408 MUSD (yahoo finance)
+UBER,Uber Technologies,United States,NYSE,Transportation,,no,,Plataforma tecnologica. No opera flota propia
+TFII,TFI International,Canada,TSX,Trucking,carga,si,80,LTL 39.3% y Truckload 40.1% con activos propios suman 79.5%. Logistics asset-light 21.3%. Porcentajes sobre total consolidado antes de recargo de combustible. Dato del 4T25 Fuente: tfiintl.com Annual Report 2025
+MTL,Mullen Group,Canada,TSX,Trucking,,no,,Cuatro segmentos sin dominancia: LTL 36.3% con activos propios Logistics y Warehousing 34.4% Specialized e Industrial Services 19.1% y US e International Logistics 10.2%. El transporte con flota propia no llega al 50% y el segmento industrial (servicios a la industria petrolera) sigue un ciclo distinto al del transporte. Fuente: mullen-group.com annual information form 2025
+MBO,Mobio Technologies,Canada,TSXV,Trucking,,no,,Empresa de tecnologia
+TTNM,Titanium Transportation Group,Canada,TSX,Transportation,,no,,Liquidez insuficiente: rango del dia de 2.21 a 2.21 sin variacion alguna lo que indica que el precio no se actualiza por falta de negociacion. Perdida neta de 21.1 MUSD sobre ingresos de 470.1 MUSD. No disponible en Yahoo Finance lo que complica la descarga de precios. Verificado en Investing.com
+CJT,Cargojet Inc,Canada,TSX,Transportation,,no,,Carga aerea. Traxion no opera transporte aereo
+ARGH,Argo Corporation,Canada,TSXV,Transportation,,no,,Empresa muy pequeÑa 
+JSLG3,JSL S.A.,Brazil,BOVESPA,Trucking,,no,,Subsidiaria controlada por Simpar (descartada como conglomerado): free float reducido y estructura de capital atada al grupo. Ademas presenta senales de estres: caida de 43% desde el maximo de 52 semanas (8.82 a 5.18) (YAHOO FINANCE)
+SIMH3,SIMPAR S.A.,Brazil,BOVESPA,Trucking,,no,,Conglomerado
+TGMA3,Tegma Gestao Logistica,Brazil,BOVESPA,Trucking,,no,,Empresa financieramente sana (BPA +3.85 P/E 8.78 spread 0.6%) pero beta Yahoo de 0.16 a cinco años mensual. Junto con JSL (beta 0.36) confirma el sesgo a la baja de los betas brasileños por negociacion relativamente delgada e Ibovespa poco representativo (dominado por commodities y bancos). Mismo fenomeno que llevo a descartar la muestra sectorial de emergentes
+NTG,NTG Nordic Transport Group,Denmark,CPSE,Trucking,logistica,si,78,Road and Logistics 78.2% de ingresos externos y Air and Ocean 21.8%. Forwarding asset-light con predominio terrestre europeo. La mezcla se mueve hacia terrestre: Road crecio 34.4% en 2025 mientras Air and Ocean cayo 9.1%. Liquidez verificada NTG.CO: spread 0.53% y volumen promedio 48050. Fuente: investor.netg.com annual report 2025 y yahoo finance
+FREETR,Freetrailer Group,Denmark,XSAT,Trucking,,no,,Muy pequeña
+LDB,Lindbergh S.p.A.,Italy,BIT,Trucking,,no,,Muy pequeña
+LAU,Lindsay Australia,Australia,ASX,Trucking,,no,,liquidez insuficiente (yahoo finance)
+TRAXION A,Grupo Traxion,Mexico,BMV,Trucking,,no,,Es la empresa valorada. Su beta de regresion se calcula aparte como contraste
+DSV,DSV A/S,Denmark,CPSE,Transportation,,no,,Air and Sea 55.5% de ingresos (forwarding aereo y maritimo) contra Road 31.5% y Contract Logistics 17.6%: el negocio terrestre suma 49.1% sin llegar al 50%. Mismo criterio aplicado a FedEx. Fuente: investor.dsv.com annual report 2025
+IDL,ID Logistics Group,France,ENXTPA,Transportation,logistica,si,100,Logistica por contrato pura
+MOV,MOVE Logistics Group,New Zealand,NZSE,Transportation,,no,,Empresa muy pequeña
+MCG,Mobico Group Plc,United Kingdom,LSE,Transportation,,no,,El negocio encaja pero la empresa esta en reestructuracion profunda
+ZIG,Zigup Plc,United Kingdom,LSE,Transportation,,no,,Ni el negocio mayoritario ni el minoritario corresponden a operacion de transporte. Fuente: resultados FY2026 
+KLS,Kelsian Group Limited,Australia,ASX,Transportation,personas,si,83,Australian Bus 52.1% e International Bus 31.2% suman 83.3% de ingresos. Marine and Tourism solo 16.7% y en proceso de desinversion segun guia FY2026. International Bus incluye charter corporativo gubernamental y del sector educativo en EE.UU.: modelo contractual equivalente al de movilidad de personas de Traxion. Ingresos FY2025 de 2209 millones AUD. Fuente: KELSIAN.COM/INVESTORS annual report 2025
+CHL,Camplify Holdings,Australia,ASX,Transportation,,no,,Plataforma de renta de vehiculos recreativos entre particulares
+GVH,Globavend Holdings,Australia,NasdaqCM,Transportation,,no,,logistica de comercio electronico
+SRH,Saferoads Holdings,Australia,ASX,Transportation,,no,,Productos de seguridad vial. No es transportista
+RENT3,Localiza Rent a Car,Brazil,BOVESPA,Transportation,,no,,Renta de autos al consumidor
+MOVI3,Movida Participacoes,Brazil,BOVESPA,Transportation,,no,,Renta de autos al consumidor
+SEQL3,Sequoia Logistica e Transportes,Brazil,BOVESPA,Transportation,,no,,Logistica de comercio electronico en reestructuracion financiera
+ECOR3,EcoRodovias Infraestrutura,Brazil,BOVESPA,Transportation,,no,,Concesiones de carreteras
+MOTV3,Motiva Infraestrutura de Mobilidade,Brazil,BOVESPA,Transportation,,no,,Concesiones de infraestructura
+TPIS3,Triunfo Participacoes,Brazil,BOVESPA,Transportation,,no,,Infraestructura y concesiones
+BPOST,bpost NV/SA,Belgium,ENXTBR,Transportation,,no,,Operador postal nacional
+PNL,PostNL N.V.,Netherlands,ENXTAM,Transportation,,no,,Operador postal nacional
+POSTI,Posti Group Oyj,Finland,HLSE,Transportation,,no,,Operador postal nacional
+NLG1V,Nurminen Logistics,Finland,HLSE,Transportation,,no,,Logistica ferroviaria muy pequeña
+GET,Getlink SE,France,ENXTPA,Transportation,,no,,Infraestructura
+AYV,Ayvens,France,ENXTPA,Transportation,,no,,Arrendamiento financiero de flota. Modelo mas cercano a servicios financieros
+ODET,Compagnie de l Odet,France,ENXTPA,Transportation,,no,,Holding diversificado del grupo Bollore
+ALGIR,Signaux Girod,France,ENXTPA,Transportation,,no,,Señalizacion vial. No es transportista
+ALTPC,Societe Marseillaise du Tunnel Prado Carenage,France,ENXTPA,Transportation,,no,,Concesion de tunel. Infraestructura
+ALTOO,Toosla,France,ENXTPA,Transportation,,no,,Renta de autos digital muy pequeña
+SIX2,Sixt SE,Germany,XTRA,Transportation,,no,,Renta de autos al consumidor
+LNSX,Allane SE,Germany,DB,Transportation,,no,,Arrendamiento de flota
+MLL,Muller Die lila Logistik,Germany,XTRA,Transportation,,no,,Logistica pequeña
+DE10,Deufol SE,Germany,HMSE,Transportation,,no,,Servicios de empaque industrial
+HVB,USTRA Hannoversche Verkehrsbetriebe,Germany,DB,Transportation,,no,,Transporte publico urbano municipal. estructura de propiedad publica
+ALA,A.L.A. societa per azioni,Italy,BIT,Transportation,,no,,Distribucion de componentes aeroespaciales
+AUTME,Autostrade Meridionali,Italy,BIT,Transportation,,no,,Concesion de autopista
+FCH,Franchetti S.p.A.,Italy,BIT,Transportation,,no,,Ingenieria de infraestructura
+SBC,Sicily by Car,Italy,BIT,Transportation,,no,,Renta de autos turistica
+ALQ,Alquiber Quality,Spain,BME,Transportation,,no,,Renta de flota pequeña
+CRGO,Freightos Limited,Spain,NasdaqCM,Transportation,,no,,Plataforma digital de reserva de fletes
+ELAN B,Elanders AB,Sweden,OM,Transportation,,no,,Impresion y cadena de suministro. Negocio mixto
+RAIL,Railcare Group,Sweden,OM,Transportation,,no,,Mantenimiento ferroviario
+MBBAB,MoveByBike Europe,Sweden,XSAT,Transportation,,no,,Micro-cap de reparto en bicicleta
+FERGR,Ferrari Group PLC,United Kingdom,ENXTAM,Transportation,,no,,Logistica de bienes de lujo. sin 3 años de historia
+THL,Tourism Holdings,New Zealand,NZSE,Transportation,,no,,Renta de vehiculos recreativos para turismo
+FRGT,Freight Technologies,Mexico,NasdaqCM,Transportation,,no,,Plataforma tecnologica de logistica. Micro-cap
+PINFRA,Promotora y Operadora de Infraestructura,Mexico,BMV,Transportation,,no,,Concesiones de infraestructura
+DONKEY,DonkeyRepublic Holding,Denmark,CPSE,Transportation,,no,,Bicicletas compartidas
+GREENM,GreenMobility,Denmark,CPSE,Transportation,,no,,Carsharing electrico
+OKEAC,Det Ostasiatiske Kompagni,Denmark,CPSE,Transportation,,no,,Holding diversificado

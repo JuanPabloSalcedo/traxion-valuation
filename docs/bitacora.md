@@ -7,6 +7,109 @@ Orden cronológico inverso: la entrada más reciente primero.
 Formato: fecha, qué se encontró o decidió, en qué se basa, qué implica para el resto del modelo.
 
 
+## 2026-08-17 - 2026-08-20 - Beta ascendente: selección de comparables
+
+Verificación empresa por empresa del universo de 153 extraído del listado de compañías por industria de Damodaran. Resultado en `data/interim/comparables.csv`: 91 empresas evaluadas, 20 incluidas y 71 descartadas con razón documentada.
+
+
+### Resultado
+
+| Grupo | Empresas |
+|---|---|
+| Carga | 11 |
+| Logística | 8 |
+| Personas | 1 |
+
+**Carga:** Heartland, Marten, Old Dominion, Saia (100%), J.B. Hunt (91%), Knight-Swift (85%), TFI International (80%), Schneider (75%), Werner (69%), ArcBest (68%), Covenant (63%).
+
+**Logística:** Landstar, RXO, Radiant, GXO, ID Logistics (100%), C.H. Robinson (91%), NTG (78%), Universal Logistics (67%).
+
+**Personas:** Kelsian (83%).
+
+### Criterios de descarte aplicados
+
+Cuatro categorías, aplicadas de forma consistente:
+
+**1. Mezcla de negocio.** El negocio comparable no domina, o la empresa opera en otra industria.
+
+**2. Liquidez insuficiente.** La negociación delgada sesga el beta a la baja porque el precio no se actualiza.
+
+**3. Historia insuficiente.** Menos de tres años de cotización.
+
+**4. Eventos corporativos que rompen la serie.** El beta del período mide la reacción del mercado al evento, no el riesgo del negocio.
+
+### Criterio para comparables híbridas
+
+Varias comparables combinan operación con flota propia (asset-based) y brokerage con activos de terceros (asset-light). Se incluyen en carga
+cuando el componente asset-based supera el 50%, aunque no llegue al umbral general de 70%.
+
+Razón: Traxión también es híbrida de modo que una comparable con structura mixta refleja mejor su perfil que un LTL puro.
+
+La distinción no es contable sino de estructura de costos, y afecta el beta directamente: la operación con flota propia tiene costos fijos que no bajan cuando cae el volumen (depreciación, conductores de planta, terminales), lo que amplifica la caída del margen. El brokerage paga por viaje. Mayor apalancamiento operativo implica mayor beta.
+
+Se conserva el porcentaje asset-based de cada comparable para verificar después si los betas se ordenan según esa columna. Si lo hacen, confirma el efecto y da un argumento para el beta de Traxión, que se está moviendo hacia asset-light.
+
+
+### Exclusión de las comparables brasileñas
+
+Se descartan JSL, Tegma, Vamos, Localiza, Movida y Sequoia como grupo.
+
+Los betas reportados para las transportadoras brasileñas son
+implausiblemente bajos: JSL 0.36 y Tegma 0.16 (cinco años, mensual),
+frente a Trucking EE.UU. 1.01 y global 0.85. Tegma está financieramente
+sana (BPA +3.85, P/E 8.78, spread 0.6%), de modo que el problema no es de
+la empresa sino de la medición: negociación relativamente delgada e
+Ibovespa dominado por commodities y bancos, que no representa la
+exposición económica de una transportadora.
+
+Es el mismo fenómeno que llevó a descartar la muestra sectorial de
+mercados emergentes de Damodaran (β desapalancado 0.37, R² de 1.5%). Los
+dos casos verificados individualmente confirman que el argumento no era
+teórico.
+
+
+### Decisión: no se estima beta separado para movilidad de personas
+
+No existe sector de transporte de personas bajo contrato en la clasificación de Damodaran, y la búsqueda de comparables cotizadas produjo un grupo inviable:
+
+- Kelsian (Australia): buena comparable, 83.3% autobús bajo contrato, incluido charter corporativo, gubernamental y del sector educativo en EE.UU.
+- Mobico (Reino Unido): negocio adecuado pero en reestructuración profunda; el precio refleja riesgo de solvencia
+- Ryder, Zigup, Vamos: renta de flota sin operación
+- Operadores japoneses de autobús: transporte público con tarifas reguladas, en bolsas regionales, con posibles negocios inmobiliarios
+
+Estimar un beta sobre ese conjunto produciría un número específico pero poco confiable.
+
+**Se adopta el beta del grupo de carga para movilidad de personas.** Ambos segmentos operan flota propia con conductores de planta bajo contratos de largo plazo, y comparten la estructura de costos fijos que determina el apalancamiento operativo. Difieren en ciclicidad de la demanda lo que sugiere que el beta aplicado sobreestima levemente el riesgo de ese segmento.
+
+**Kelsian se conserva como verificación, no como insumo.** Se calculará su beta individual y se comparará contra el del grupo de carga. Si resulta similar, confirma que la aproximación era razonable; si difiere mucho, es un dato para sensibilidad.
+
+La ponderación queda en dos grupos:
+
+    β = 49.3% * β_logística + 50.7% * β_carga
+
+donde 50.7% = carga (20.0%) + personas (30.7%), según la mezcla de ingresos de 6M26.
+
+
+**Decisión: índice, ventana y frecuencia**
+
+Previamente se planteo la posibilidad de usar un solo indice global. Sin ebargo, tras los resultados obtenidos en comparables.csv se decide:
+
+- Índice: S&P 500
+- Ventana: 3 años
+- Frecuencia: semanal (156 observaciones)
+
+**Índice.** Se regresa contra el S&P 500 y no contra un índice global, pese a que tres comparables no son estadounidenses. Razón principal: la ERP adoptada es la implícita del S&P 500 (4.28%), y en el CAPM el beta y la prima deben medirse contra el mismo mercado. Un beta contra un índice global multiplicando una prima del S&P 500 mezclaría dos definiciones de mercado. Además permite comparar el resultado con los betas sectoriales de Damodaran, que se estiman contra índices locales, y 17 de las 20 comparables cotizan en Estados Unidos.
+
+**Ventana.** Tres años, dentro del rango estándar de 2 a 5. Tres razones:
+- una ventana de 5 años excluiría algunas comparables de calidad
+- el sector está en transición rápida hacia modelos asset-light (Universal Logistics pasó de 49.9% a 67.3% de logística en dos años) de modo que una ventana larga promedia empresas distintas
+- el período 2021-2022 fue excepcionalmente favorable para el autotransporte norteamericano por la congestión post-pandemia, y mezclarlo con la corrección posterior combinaría dos regímenes.
+
+**Frecuencia.** Semanal. Dividir más los datos los vuelve ruidosos; mensual sobre 3 años daría solo 36 observaciones.
+
+Se registra como sensibilidad: correr también la ventana de 5 años sobre las comparables que la permitan, para verificar cuánto cambia el beta promedio.
+
+
 ## 2026-08-14 - Beta ascendente: sectores de referencia, decisiones y universo de comparables
 
 Traxion cotiza, por lo que cuenta con un beta de regresión propio. No se usa como insumo por el error estandar naturalmente alto de una sola regresión. Ek promedio de muchas regresiones comparables reduce ese error con $\sqrt{n}$.
@@ -150,11 +253,6 @@ Transportation: C.H. Robinson, Expeditors, GXO, Hub Group, Forward Air, FedEx, U
 Hallazgo para el grupo de movilidad de personas. El listado japonés de Transportation incluye operadores de autobuses: Hokkaido Chuo Bus, Shinki Bus, Kanagawa Chuo Kotsu, Niigata Kotsu, Daiichi Koutsu Sangyo. También Kelsian Group (Australia), que opera autobuses bajo contrato. Son los comparables más cercanos encontrados hasta ahora para ese segmento
 
 Nota: comparables.csv sera para la selección final con la verificación de negocio.
-
-**Decisión del indice de regresión**
-
-Se utilizará un índice global unico como MSCI World para todas. Coherente con ivnersionista con diversificación geografica.
-Las correlaciones deberían subir respecto a las de Damodaran.
 
 
 ## 2026-08-10 - BETA: Definir los comparables
@@ -301,30 +399,47 @@ compararse.
 | Spread de default México (CDS) | 1.52% | Damodaran, ctryprem (neto de CDS suizo) | 01/01/2026 |
 
 TREASURY ESTADOUNIDENSE 10 AÑOS
+
 ![Curva de rendimientos del Tesoro estadounidense al 07/08/2026](img/treasury_10y_20260807.png)
+
 https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=2026
 
 M-BONO MXN A 10 AÑOS
+
 ![Vector de precios de Bonos M al 06/08/2026, Banco de México](img/banxico_bonos_m_precios.png)
+
 Banxico publica precio, no rendimiento. El YTM se calcula desde el precio sucio (96.308857), cupón vigente (8.00%) y plazo residual (3,486 días) del bono con vencimiento 21/02/2036.
+
 https://www.banxico.org.mx/SieInternet/consultarDirectorioInternetAction.do?accion=consultarCuadro&idCuadro=CF300&sectorDescripcion=Mercado
+
 VERIFICACIÓN: Cbonds, Mexico 10Y YTM = 9.129% al 07/08/2026
+
 https://cbonds.com/indexes/24265/
 
 INFLACIÓN ESPERADA A 10 AÑOS USD
+
 ![Serie histórica del breakeven de inflación a 10 años, FRED](img/fred_t10yie_20260807.png)
+
 2.25% al 07/08/2026
+
 https://fred.stlouisfed.org/series/T10YIE
 
 INFLACIÓN ESPERADA A 5-8 AÑOS MXN
+
 ![Expectativas de inflación de largo plazo, Encuesta Banxico julio 2026](img/banxico_expectativas_largo_plazo.png)
+
 Se usa la mediana: 3.75%
+
 https://www.banxico.org.mx/publicaciones-y-prensa/encuestas-sobre-las-expectativas-de-los-especialis/%7B9A769BA5-F259-4032-8399-BAE68C36ABFA%7D.pdf
 
 Spread de default de Mexico
+
 DAMODARAN:
+
 ![Fila de México en el dataset de primas de riesgo país de Damodaran](img/damodaran_ctryprem_mexico.png)
+
 https://pages.stern.nyu.edu/~adamodar/New_Home_Page/datafile/ctryprem.html
+
 
 ### El Bono M: por qué hubo que calcular el rendimiento
 
@@ -734,6 +849,7 @@ Los 11,2 de costos de adquisición hacen caer la utilidad de 2025 por el evento 
 en cuenta cuando se normalice EBIT.
 
 Otros ajustes para tener en cuenta al normalizar EBIT en 2025:
+
 ![Reconciliación de utilidad neta a EBITDA ajustado, reporte anual 2025](img/reconciliacion_ebitda_2025.png)
 
 
