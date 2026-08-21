@@ -3,3 +3,6 @@ numpy
 pyyaml
 matplotlib
 jupyter
+yfinance
+scipy
+statsmodels
