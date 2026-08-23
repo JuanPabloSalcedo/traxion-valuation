@@ -43,6 +43,8 @@ primaria y la ruta para reconstruirlo.
 | ERP total México (CDS) | 6.55% | Damodaran, ctryprem | Columna Total Equity Risk Premium, vía CDS | 2026-01-01 |
 | ERP de mercado maduro | 4.23% | Damodaran, ctryprem | Encabezado del archivo | 2026-01-01 |
 | Multiplicador volatilidad relativa | 1.52 | Damodaran, ctryprem | Encabezado, hoja "Relative Equity Volatility" | 2026-01-01 |
+| Precio TRAXIONA | 11.89 MXN | Yahoo Finance | 2026-08-07 |
+| Acciones en circulación | 555,980,425 | Yahoo Finance, verificado contra reporte 2T26 | 2026-08-07 |
 
 ## Betas sectoriales de referencia
 
@@ -87,10 +89,22 @@ la historia de precios de cada candidata.
 | damodaran_betas_sector_global_ene2026.xls | Betas by Sector, global | 2026-01-01 |
 | damodaran_betas_sector_emergentes_ene2026.xls | Betas by Sector, mercados emergentes | 2026-01-01 |
 | damodaran_industry_company_listing_ene2026.xls | Industry Name and Global Company Listing | 2026-01-01 |
+| countrytaxrates.xls | Corporate Tax Rates by Country | 2026-01-01 |
+| ratings.xls | Ratings, Interest Coverage Ratios and Default Spread | 2026-01-01 |
 
 La página `datacurrent.html` se sobrescribe en cada actualización (una o dos veces al año). Por eso los archivos se conservan en `data/raw/` con la fecha de corte en el nombre. La ERP implícita, en cambio, se actualiza mensualmente en la misma página.
 
 Las capturas de las tablas consultadas están en `docs/img/`.
+
+## Calificación crediticia
+
+| Dato | Valor | Fuente | Fecha |
+|---|---|---|---|
+| Calificación largo plazo | A+(mex), perspectiva estable | Fitch Ratings | 2026-05-29 |
+| Calificación corto plazo | F1(mex) | Fitch Ratings | 2026-05-29 |
+| Deuda total según Fitch | 16,518 millones MXN a marzo 2026 | Fitch | 2026-05-29 |
+
+Escala nacional mexicana.
 
 ## Datos derivados
 

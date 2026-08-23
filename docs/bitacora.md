@@ -7,6 +7,134 @@ Orden cronológico inverso: la entrada más reciente primero.
 Formato: fecha, qué se encontró o decidió, en qué se basa, qué implica para el resto del modelo.
 
 
+## 2026 - 08 - 22 Modulo 2: Costo de capital
+
+Cálculo completo en `notebooks/costo_capital.ipynb`.
+
+### Beta ascendente
+
+Regresiones semanales de tres años contra el S&P 500 sobre las veinte comparables. Todas con 156 observaciones.
+
+| Grupo | n | Beta apalancado | Beta desapalancado |
+|---|---|---|---|
+| Carga | 11 | 0.950 | 0.873 |
+| Logística | 8 | 0.926 | 0.677 |
+
+![Betas de regresión de las comparables](img/betas_comparables.png)
+
+El R2 promedio de 15.2% supera el 13.1% de Damodaran para Trucking EE.UU. Pero el error estándar promedio de 0.19 hace que los intervalos de casi todas las empresas se solapen, así que ninguna estimación individual sirve sola.
+
+La mediana desapalancada de carga da 0.873 contra el 0.87 que publica Damodaran, calculado sobre otras 26 empresas con otra ventana. Dos caminos independientes al mismo número.
+
+Se usa mediana y no media porque RXO (1.438) arrastra el promedio de logística.
+
+**Contraste con el beta propio de Traxión.** Contra el S&P 500 da 0.594 con R2 de 6.5% e intervalo de 0.24 a 0.95. Contra el IPC sube a 0.741 con R2 de 10.4%, así que parte del problema es el índice pero la mayor parte es la acción. Con ese intervalo el Ke variaría casi cinco puntos, que es justamente lo que justifica el enfoque ascendente.
+
+### Ponderación
+
+Los múltiplos EV/ventas medianos difieren: carga 1.46x, personas 0.95x, logística 0.82x. Aplicándolos a los ingresos de cada segmento:
+
+| Segmento | Por ingresos | Por valor |
+|---|---|---|
+| Logística | 49.3% | 40.9% |
+| Carga | 20.0% | 29.6% |
+| Personas | 30.7% | 29.5% |
+
+Logística aporta la mitad de las ventas pero dos quintos del valor, coherente con sus márgenes de 2-3%.
+
+Beta desapalancado = 0.409 * 0.677 + 0.591 * 0.873 = 0.793
+
+Por ingresos habría dado 0.776, unos 12 puntos básicos de diferencia en el Ke.
+
+### Reapalancamiento y costo del patrimonio
+
+Precio de 11.89 y 555,980,425 acciones dan un patrimonio de mercado de 6,610.6 millones. Contra deuda de 15,935.7, el D/E queda en 241% y la deuda pesa 70.7% de la estructura.
+
+BETAL = 0.793 * [1 + 0.70 * 2.411] = 2.131
+Ke (USD) = 4.43% + 2.131 * 6.82% = 18.96%
+Ke (MXN) = 20.71%
+
+La mediana de D/E de las comparables es 19%. Traxión está muy por encima por la deuda de Solistica y por la caída del precio de la acción, que acumuló un alfa de −30% anual en tres años.
+
+### Costo de deuda
+
+Cobertura = 2,456.3 / 1,753.8 = 1.40x
+
+Se usa el EBIT del año base y no el de los UDM, por consistencia con los flujos que se van a proyectar. Con el UDM la cobertura baja a 1.23x y el rating cae un escalón, lo que queda como sensibilidad.
+
+Se aplica la tabla de empresas pequeñas: Traxión capitaliza unos 350 millones de dólares, muy por debajo del umbral de 5,000.
+
+![Tabla de rating sintético para empresas pequeñas](img/damodaran_ratings_empresas_pequenias.png)
+
+Rating sintético: Caa/CCC, spread 8.85%
+kd (USD) = 4.43% + 1.52% + 8.85% = 14.80%
+kd (MXN) = 16.48%
+kd después de impuestos = 11.54%
+
+El gasto de intereses incluye los arrendamientos IFRS 16: no hay línea separada en el estado de resultados y la norma obliga a reconocerlos. La tasa implícita lo confirma, 11.01% sobre la deuda total contra 12.51% si cubriera solo la financiera.
+
+La tasa de la deuda ya contratada (11.01%) queda cinco puntos por debaj del kd marginal. La brecha refleja el deterioro del perfil crediticio desde que se tomó esa deuda.
+
+### Contraste con Fitch
+
+![Calificación de Fitch](img/fitch_calificacion_a_mas.png)
+
+Fitch afirmó el 29 de mayo de 2026 la calificación en A+(mex), perspectiva estable, contra un sintético de Caa/CCC.
+
+Las escalas no son comparables: la nacional mide riesgo relativo dentro de México con techo en el soberano, mientras el sintético es escala internacional. Un A+(mex) equivale más o menos a BB o BBB- internacional, así que la brecha real es de cuatro o cinco escalones.
+
+Aun así persiste. Fitch usa deuda sobre EBITDAR, que proyecta en 3x para2026 y 2.5x hacia 2028, no cobertura de intereses sobre EBIT. Y pondera cosas que la tabla ignora: liderazgo en los tres segmentos, top diez clientes por debajo del 15% de ingresos con ninguno sobre 3%, líneas omprometidas por 2,500 millones.
+
+No se ajusta el costo de deuda por esto. Adoptar el rating de Fitch exigiría un spread en escala nacional, incompatible con la construcción en dólares. La brecha queda para el Monte Carlo.
+
+**Validación del criterio de deuda.**
+
+![Composición de la deuda según Fitch](img/fitch_composicion_deuda.png)
+
+Fitch reporta la deuda a marzo de 2026 en 16,518 millones: deuda bancaria y arrendamientos financieros por 9,764, certificados bursátiles por 4,720 y otros arrendamientos operativos por 2,034. Es la misma cifra construida en el Módulo 1 sumando las líneas del balance. Reincorporar los arrendamientos que la empresa excluye no fue interpretación propia sino tambien el criterio de la calificadora.
+
+**Validación del margen base.** Fitch proyecta margen EBITDAR cerca de 15% para 2026. Con D&A de 3,111.4 sobre ingresos de 38,082.2, eso implica un margen operativo del orden de 6.8%, cerca al 6.45% adoptado por otra vía.
+
+### WACC
+
+WACC = 20.71% * 29.3% + 11.54% * 70.7% = 14.23%
+
+Ponderaciones a valor de mercado. El WACC queda cerca del costo de deuda porque el patrimonio pesa apenas tres décimas.
+
+**Queda abierto** si la valoración usa la estructura actual o una objetivo.
+El 70.7% refleja la deuda de Solistica y la caída de la acción. La empresa
+anunció desapalancar y Fitch proyecta la razón bajando a 2.5x. Modulos futuros daran el optimo.
+
+### El retorno no cubre el costo de capital
+
+Capital invertido = 15,935.7 + 14,260.9 − 1,383.0 = 28,813.6
+ROC = 2,456.3 * 0.70 / 28,813.6 = 5.97%
+WACC = 14.23%
+Diferencia = -8.26 puntos
+
+![ROC contra WACC en los escenarios de margen](img/roc_vs_wacc.png)
+
+Ninguno de los cuatro escenarios de margen cierra la brecha. Con recuperación total de los tres segmentos el ROC llega a 7.09%, la mitad del WACC.
+
+El capital invertido usa patrimonio contable, no de mercado: mide el capital efectivamente puesto a trabajar.
+
+
+Coincide con lo que dice el mercado: alfa de −30% anual y múltiplo EV/ventas de 0.56x contra 1.46x de mediana en las comparables de carga.
+
+### Resultados
+
+| Parámetro | Valor |
+|---|---|
+| Beta desapalancado | 0.793 |
+| Beta reapalancado | 2.131 |
+| Ke en pesos | 20.71% |
+| Rating sintético | Caa/CCC |
+| kd después de impuestos | 11.54% |
+| Peso de la deuda | 70.7% |
+| WACC en pesos | 14.23% |
+
+
+
 ## 2026-08-17 - 2026-08-20 - Beta ascendente: selección de comparables
 
 Verificación empresa por empresa del universo de 153 extraído del listado de compañías por industria de Damodaran. Resultado en `data/interim/comparables.csv`: 91 empresas evaluadas, 20 incluidas y 71 descartadas con razón documentada.
