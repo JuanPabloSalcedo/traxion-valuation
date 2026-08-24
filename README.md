@@ -48,10 +48,10 @@ Módulo 2 (costo de capital) completado.
 | Beta desapalancado | 0.793 |
 | Beta reapalancado | 2.131 |
 | Ke en pesos | 20.71% |
-| Rating sintético | Caa/CCC |
-| kd después de impuestos | 11.54% |
+| Rating sintético | B3/B− |
+| kd después de impuestos | 8.87% |
 | Peso de la deuda | 70.7% |
-| **WACC en pesos** | **14.23%** |
+| **WACC en pesos** | **12.34%** |
 
 Cifras en millones de pesos. Fecha de valoración: 7 de agosto de 2026.
 
@@ -67,19 +67,19 @@ Así se ve una de ellas. Cada punto es una semana, la pendiente de la recta es e
 
 ![Betas de regresión de las comparables](docs/img/betas_comparables.png)
 
-Repitiendo el ejercicio sobre las veinte, las barras grises son el error estándar de cada estimación. La diferencia entre un beta de 0.85 y uno de 1.05 no es estadísticamente distinguible. Esa es la razón del enfoque ascendente: el error del promedio cae con la raíz del número de comparables.
+Repitiendo el ejercicio sobre las veinte, las barras grises son el error estándar de cada estimación. Se solapan entre casi todas las empresas, de modo que la diferencia entre un beta de 0.85 y uno de 1.05 no es estadísticamente distinguible. Esa es la razón del enfoque ascendente: el error del promedio cae con la raíz del número de comparables.
 
-La mediana desapalancada del grupo de carga da 0.873 contra el 0.87 que publica Damodaran para Trucking EEUU, calculado sobre otras 26 empresas con distinto metodo. Dos caminos independientes al mismo número.
+La mediana desapalancada del grupo de carga da 0.873 contra el 0.87 que publica Damodaran para Trucking EE.UU., calculado sobre otras 26 empresas con distinta ventana y frecuencia. Dos caminos independientes al mismo número.
 
 ### El retorno no cubre el costo de capital
 
 ![ROC contra WACC en los escenarios de margen](docs/img/roc_vs_wacc.png)
 
-Con el año base adoptado, el retorno sobre el capital invertido después de impuestos es 5.97% contra un WACC de 14.23%. Ninguno de los cuatro escenarios de margen evaluados cierra la brecha: incluso con recuperación total de los tres segmentos a sus márgenes de hace un año, el ROC llega a 7.09%.
+Con el año base adoptado, el retorno sobre el capital invertido después de impuestos es 5.97% contra un WACC de 12.34%. Separando el crédito mercantil, que junto a los intangibles suma 28.5% del capital, el ROC sobre capital operativo sube a 8.35%: buena parte de la brecha viene del precio pagado en adquisiciones y no de la operación. Aun así ninguna base alcanza el costo de capital, y ninguno de los cuatro escenarios de margen evaluados cierra la brecha.
 
 Cuando el retorno está por debajo del costo de capital, la reinversión destruye valor. El modelo de crecimiento fundamental va a reflejarlo.
 
-Coincide con lo que descuenta el mercado: la acción acumuló un alfa de −30% anual en tres años y cotiza a un múltiplo EV/ventas de 0.56x, contra una mediana de 1.46x en las comparables de carga.
+Como prueba de consistencia, capitalizar el NOPAT a perpetuidad sin crecimiento da un patrimonio negativo, mientras el mercado cotiza 6,611 millones, lo que implica un WACC de 8.12%. La brecha se examina en el Módulo 8.
 
 ## Estructura
 
@@ -125,6 +125,8 @@ Se aísla la contribución de la adquisición para medir el crecimiento real alr
 
 - **El Treasury tampoco es libre de riesgo.** Estados Unidos tiene calificación Aa1, lo que implica un spread de default de 0.22%. Se ajusta la tasa base y se traslada ese spread a la prima, aplicando a Estados Unidos el mismo criterio que con el bono mexicano.
 
+- **La cobertura de intereses se calcula en dólares, no en pesos.** La tabla de ratings está calibrada con empresas estadounidenses, y un gasto de intereses en pesos incorpora la prima inflacionaria mexicana: a igual apalancamiento real la cobertura sale peor solo por las tasas nominales más altas. Usarla y después convertir el spread con Fisher cobraría el diferencial de inflación dos veces. La corrección mueve el rating de Caa/CCC a B3/B− y el WACC de 14.23% a 12.34%.
+
 - **Sector de referencia verificado, no supuesto.** Se descargó el listado de compañías por industria para comprobar qué contiene cada sector en vez de inferirlo del nombre. Resultado: Trucking y Transportation son categorías paralelas y cada segmento de Traxión tiene su propia referencia. La muestra de mercados emergentes se descarta pese a que Traxión es mexicana: su R² de 1.5% y un D/E implícito de 170% indican betas sesgados por iliquidez, y el riesgo país ya entró por la prima.
 
 - **Comparables verificadas una por una.** De 153 empresas del universo se evaluaron 91 y se incluyeron 20. Las verificaciones produjeron siete correcciones sobre la clasificación inicial hecha por sector y nombre: Universal Logistics, RXO y Landstar resultaron asset-light y pasaron a logística; Werner, ArcBest y Covenant resultaron híbridas; Ryder resultó conglomerado sin negocio dominante. Cada descarte queda documentado con su razón.
@@ -133,9 +135,9 @@ Se aísla la contribución de la adquisición para medir el crecimiento real alr
 
 - **Ponderación por valor y no por ingresos.** Los múltiplos EV/ventas medianos difieren entre segmentos (carga 1.46x, personas 0.95x, logística 0.82x), de modo que un peso de ingreso no vale igual en cada negocio. Ponderando por valor estimado, logística pasa de 49.3% a 40.9% del peso: aporta la mitad de las ventas pero dos quintos del valor.
 
-- **El rating sintético resulta mucho más severo que la calificación real.** La cobertura de 1.40x arroja Caa/CCC con la tabla de empresas pequeñas, mientras Fitch afirma A+(mex). Parte de la brecha es de escala, pero persiste porque la calificadora usa deuda sobre EBITDAR y pondera escala, diversificación de clientes y líneas comprometidas, factores que la tabla ignora. No se ajusta el costo de deuda: adoptar el rating de Fitch exigiría un spread en escala nacional incompatible con la construcción en dólares.
+- **El rating sintético resulta más severo que la calificación real.** La cobertura de 1.64x arroja B3/B− con la tabla de empresas pequeñas, mientras Fitch afirma A+(mex), equivalente a un rango entre BB y BBB− internacional. La brecha de dos o tres escalones persiste porque la calificadora usa deuda sobre EBITDAR y pondera escala, diversificación de clientes y líneas comprometidas, factores que la tabla ignora. No se ajusta el costo de deuda: adoptar el rating de Fitch exigiría un spread en escala nacional incompatible con la construcción en dólares.
 
-- **El retorno sobre el capital no cubre el costo de capital.** ROC de 5.97% contra WACC de 14.23%. Ninguno de los escenarios de margen evaluados cierra la brecha. La consecuencia es que la reinversión destruye valor, algo que el modelo de crecimiento fundamental va a reflejar.
+- **El retorno sobre el capital no cubre el costo de capital.** ROC de 5.97% sobre capital total y 8.35% sobre capital operativo, contra un WACC de 12.34%. Ninguno de los escenarios de margen evaluados cierra la brecha. La consecuencia es que la reinversión destruye valor, algo que el modelo de crecimiento fundamental va a reflejar.
 
 ## Datos
 

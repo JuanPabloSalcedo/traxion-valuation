@@ -6,6 +6,37 @@ Orden cronológico inverso: la entrada más reciente primero.
 
 Formato: fecha, qué se encontró o decidió, en qué se basa, qué implica para el resto del modelo.
 
+## 2026-08-23 - Corrección al costo de deuda y al ROC
+
+Dos ajustes tras revisar el Módulo 2.
+
+**Cobertura de intereses en moneda consistente.** La tabla de ratings de Damodaran está calibrada con empresas estadounidenses que se endeudan en dólares. El gasto de intereses de Traxión está en pesos e incorpora la prima inflacionaria mexicana: a igual apalancamiento real, una empresa mexicana muestra menor cobertura solo porque sus tasas nominales son más altas. Usar esa cobertura y después convertir el spread a pesos con Fisher pone el diferencial de inflación dos veced.
+
+Se convierte el gasto de intereses a su equivalente en dólares antes de buscar el rating. 
+
+Se ajusta y corrige el notebook costo_capital.ipynb
+
+| | Antes | Después |
+|---|---|---|
+| Cobertura | 1.40x | 1.64x |
+| Rating sintético | Caa/CCC | B3/B− |
+| Spread | 8.85% | 5.09% |
+| kd en pesos | 16.48% | 12.67% |
+| kd después de impuestos | 11.54% | 8.87% |
+| WACC | 14.23% | 12.34% |
+
+El contraste con Fitch se estrecha: frente a A+(mex), que equivale más o menos a BB o BBB- internacional, la brecha pasa de cinco escalones a dos o tres.
+
+**ROC separando crédito mercantil.** El ROC sobre capital total mezcla dos diagnósticos: si el negocio rinde y si las adquisiciones salieron caras.
+
+| Base de capital | Capital | ROC |
+|---|---|---|
+| Total | 28,813.6 | 5.97% |
+| Sin crédito mercantil | 23,516.3 | 7.31% |
+| Sin crédito mercantil ni intangibles | 20,596.4 | 8.35% |
+
+Crédito mercantil e intangibles suman 8,217, el 28.5% del capital invertido. Una parte de la brecha viene del precio pagado en adquisiciones y no de la operación. Aun así, en ninguna base el ROC alcanza el WACC.
+
 
 ## 2026 - 08 - 22 Modulo 2: Costo de capital
 
