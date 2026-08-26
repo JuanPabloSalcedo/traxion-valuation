@@ -79,7 +79,6 @@ Con el año base adoptado, el retorno sobre el capital invertido después de imp
 
 Cuando el retorno está por debajo del costo de capital, la reinversión destruye valor. El modelo de crecimiento fundamental va a reflejarlo.
 
-Como prueba de consistencia, capitalizar el NOPAT a perpetuidad sin crecimiento da un patrimonio negativo, mientras el mercado cotiza 6,611 millones, lo que implica un WACC de 8.12%. La brecha se examina en el Módulo 8.
 
 ## Estructura
 
@@ -94,7 +93,7 @@ Las decisiones metodológicas están documentadas en
 
 ## Notebooks
 
-- `notebooks/costo_capital.ipynb` : regresiones de beta, desapalancamiento, ponderación, costo de deuda y WACC
+- `notebooks/costo_capital.ipynb` : regresiones de betas, desapalancamiento, ponderación, costo de deuda y WACC
 
 ## Metodología
 

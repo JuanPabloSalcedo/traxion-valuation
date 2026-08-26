@@ -37,6 +37,8 @@ El contraste con Fitch se estrecha: frente a A+(mex), que equivale más o menos 
 
 Crédito mercantil e intangibles suman 8,217, el 28.5% del capital invertido. Una parte de la brecha viene del precio pagado en adquisiciones y no de la operación. Aun así, en ninguna base el ROC alcanza el WACC.
 
+CAMBIA EL WACC Y ROC REGISTRADO EN 2026 - 08 - 22 Modulo 2: Costo de capital
+
 
 ## 2026 - 08 - 22 Modulo 2: Costo de capital
 
@@ -164,7 +166,7 @@ Coincide con lo que dice el mercado: alfa de −30% anual y múltiplo EV/ventas 
 | Peso de la deuda | 70.7% |
 | WACC en pesos | 14.23% |
 
-
+[Corregido el 2026-08-23: la cobertura se recalculó en moneda consistente. Rating B3/B−, spread 5.09%, WACC 12.34%. Ver esa entrada.]
 
 ## 2026-08-17 - 2026-08-20 - Beta ascendente: selección de comparables
 
