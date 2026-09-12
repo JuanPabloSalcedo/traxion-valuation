@@ -6,6 +6,61 @@ Orden cronológico inverso: la entrada más reciente primero.
 
 Formato: fecha, qué se encontró o decidió, en qué se basa, qué implica para el resto del modelo.
 
+## 2026-09-12 - Módulo 3: flujo de caja libre del año base
+
+Cálculo en `notebooks/flujos.ipynb`
+
+### El capex parecía insuficiente y no lo era
+
+El capex de flota cayó de 16.7% de los ingresos en 2022 a 4.9% en los UDM, mientras la D&A se mantuvo en 8-9%. En la ventana reciente Traxión invierte 60 centavos por cada peso que se deprecia, lo que sugería subinversión y una reinversión neta de −1,230.3.
+
+El desglose de la D&A del reporte anual 2025 muestra que la comparación estaba mal planteada:
+
+| Componente | 2025 | % |
+|---|---|---|
+| Depreciación de equipo de transporte y maquinaria | 1,783.8 | 62.2% |
+| Depreciación de activos por derecho de uso | 920.7 | 32.1% |
+| Amortización de intangibles | 165.0 | 5.8% |
+
+Un tercio de la D&A corresponde a activos arrendados, que no se reponen comprando sino firmando arrendamientos nuevos. 
+
+Contra la partida correcta, el capex de flota de 2025 supera en 32% la depreciación de los activos propios. 
+
+**No hay subinversión.** El error venía de comparar capex de activos comprados contra depreciación de comprados más arrendados.
+
+### Capital de trabajo
+
+Definición no monetaria: se excluye la caja del activo y toda la deuda del pasivo, incluidas las obligaciones por arrendamiento que ya se contaron como deuda en el Módulo 1.
+
+| | dic-2025 | jun-2026 |
+|---|---|---|
+| Capital de trabajo | 1,781.7 | 1,943.2 |
+| Sobre ingresos | 5.27% | 5.10% |
+
+Estable como proporción de ventas. Se proyecta con ese ratio y el crecimiento orgánico de 3.2%, lo que da un consumo de caja de 62.2
+
+El estado de flujos del 2T26 reporta -370 de variación en el semestre contra los +161.5 de comparar balances. La empresa agrupa las partidas de otra forma y su cifra incluye efectos cambiarios. Se adopta el cálculo propio.
+
+
+### Resultado
+
+| Concepto | Monto |
+|---|---|
+| NOPAT | 1,719.4 |
+| Capex de flota | −1,881.1 |
+| Depreciación reponible | +1,934.2 |
+| Cambio en capital de trabajo | −62.2 |
+| Reinversión | 9.1 |
+| **FCFF del año base** | **1,710.3** |
+| Tasa de reinversión | 0.5% |
+
+
+Una tasa de reinversión de 0.5% implica un crecimiento fundamental casinulo:
+
+g = tasa de reinversión * ROC = 0.5% * 5.97% = 0.03%
+
+Eso reordena el diagnóstico del Módulo 2. No es que la empresa reinvierta mal a un retorno inferior a su costo de capital: es que dejó de reinvertir. Coherente con lo anunciado en el 2T26: recorte de 500 millones de capex, salida del 25% de la flota de carga y migración a un modelo asset-light
+
 ## 2026-08-23 - Corrección al costo de deuda y al ROC
 
 Dos ajustes tras revisar el Módulo 2.
@@ -134,9 +189,7 @@ WACC = 20.71% * 29.3% + 11.54% * 70.7% = 14.23%
 
 Ponderaciones a valor de mercado. El WACC queda cerca del costo de deuda porque el patrimonio pesa apenas tres décimas.
 
-**Queda abierto** si la valoración usa la estructura actual o una objetivo.
-El 70.7% refleja la deuda de Solistica y la caída de la acción. La empresa
-anunció desapalancar y Fitch proyecta la razón bajando a 2.5x. Modulos futuros daran el optimo.
+**Queda abierto** si la valoración usa la estructura actual o una objetivo. El 70.7% refleja la deuda de Solistica y la caída de la acción. La empresa anunció desapalancar y Fitch proyecta la razón bajando a 2.5.
 
 ### El retorno no cubre el costo de capital
 
@@ -215,18 +268,9 @@ Se conserva el porcentaje asset-based de cada comparable para verificar después
 
 Se descartan JSL, Tegma, Vamos, Localiza, Movida y Sequoia como grupo.
 
-Los betas reportados para las transportadoras brasileñas son
-implausiblemente bajos: JSL 0.36 y Tegma 0.16 (cinco años, mensual),
-frente a Trucking EE.UU. 1.01 y global 0.85. Tegma está financieramente
-sana (BPA +3.85, P/E 8.78, spread 0.6%), de modo que el problema no es de
-la empresa sino de la medición: negociación relativamente delgada e
-Ibovespa dominado por commodities y bancos, que no representa la
-exposición económica de una transportadora.
+Los betas reportados para las transportadoras brasileñas son implausiblemente bajos: JSL 0.36 y Tegma 0.16 (cinco años, mensual), frente a Trucking EE.UU. 1.01 y global 0.85. Tegma está financieramente sana (BPA +3.85, P/E 8.78, spread 0.6%), de modo que el problema no es de la empresa sino de la medición: negociación relativamente delgada e Ibovespa dominado por commodities y bancos, que no representa la exposición económica de una transportadora.
 
-Es el mismo fenómeno que llevó a descartar la muestra sectorial de
-mercados emergentes de Damodaran (β desapalancado 0.37, R² de 1.5%). Los
-dos casos verificados individualmente confirman que el argumento no era
-teórico.
+Es el mismo fenómeno que llevó a descartar la muestra sectorial de mercados emergentes de Damodaran (β desapalancado 0.37, R² de 1.5%). Los dos casos verificados individualmente confirman que el argumento no era teórico.
 
 
 ### Decisión: no se estima beta separado para movilidad de personas

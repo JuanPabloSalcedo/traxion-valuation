@@ -1,0 +1,46 @@
+# Parametros del modelo de valoracion de Grupo Traxion
+# Fecha de valoracion: 2026-08-07
+ano_base:
+  ingresos: 38082.2
+  margen_ebit: 0.0645
+  ebit: 2456.3
+  nopat: 1719.4
+  fuente: UDM jul25-jun26, escenario de recuperacion del segmento de carga
+
+costo_capital:
+  rf_usd: 0.0443
+  erp_madura: 0.0450
+  crp_mexico: 0.0232
+  beta_desapalancado: 0.793
+  beta_reapalancado: 2.131
+  ke_mxn: 0.2071
+  rating_sintetico: B3/B-
+  spread_sintetico: 0.0509
+  kd_mxn: 0.1267
+  kd_despues_impuestos: 0.0887
+  wacc: 0.1234
+  tasa_marginal: 0.30
+
+balance:
+  deuda: 15935.7
+  efectivo: 1383.0
+  patrimonio_contable: 14260.9
+  capital_invertido: 28813.6
+  acciones: 555980425
+  precio_mercado: 11.89
+
+flujos:
+  capex_flota: 1881.1
+  depreciacion_reponible: 1934.2
+  ctno_sobre_ingresos: 0.051
+  reinversion: 9.1
+  fcff_base: 1710.3
+  tasa_reinversion: 0.005
+
+crecimiento:
+  organico_observado: 0.032
+  fundamental_implicito: 0.0003
+
+inflacion_esperada:
+  mxn: 0.0375
+  usd: 0.0225

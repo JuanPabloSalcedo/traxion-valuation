@@ -7,8 +7,9 @@ Se valora como ensayo metodológico previo a la valoración de una empresa priva
 
 ## Estado
 
-Módulo 1 (datos y normalización) completado.
-Módulo 2 (costo de capital) completado.
+## Estado
+
+Módulos 1 a 3 completados.
 
 - [x] Estructura del repositorio
 - [x] Serie histórica 2021-2025 transcrita y verificada
@@ -21,10 +22,11 @@ Módulo 2 (costo de capital) completado.
 - [x] Regresiones, desapalancamiento y ponderación del beta
 - [x] Costo de deuda y rating sintético
 - [x] WACC
-- [ ] Estructura óptima de capital
-- [ ] Flujos, crecimiento y valor terminal
-- [ ] Puente al patrimonio y verificación contra mercado
-- [ ] Valoración relativa
+- [x] Flujo de caja libre del año base
+- [ ] Crecimiento fundamental
+- [ ] Valor terminal
+- [ ] Puente al patrimonio y valor por acción
+- [ ] Verificación contra mercado
 - [ ] Simulación de Monte Carlo
 
 ## Resultados hasta ahora
@@ -52,6 +54,15 @@ Módulo 2 (costo de capital) completado.
 | kd después de impuestos | 8.87% |
 | Peso de la deuda | 70.7% |
 | **WACC en pesos** | **12.34%** |
+
+**Flujo del año base**
+
+| Concepto | Valor |
+|---|---|
+| NOPAT | 1,719.4 |
+| Reinversión | 9.1 |
+| FCFF | 1,710.3 |
+| Tasa de reinversión | 0.5% |
 
 Cifras en millones de pesos. Fecha de valoración: 7 de agosto de 2026.
 
@@ -83,7 +94,7 @@ Cuando el retorno está por debajo del costo de capital, la reinversión destruy
 ## Estructura
 
 - `data/` : reportes fuente, datos intermedios y procesados
-- `supuestos/` : parámetros del modelo con fuente y fecha
+- `supuestos/traxion.yaml` : parámetros del modelo con su fuente
 - `src/` : lógica de cálculo 
 - `notebooks/` : narrativa del análisis
 - `docs/` : bitácora de decisiones metodológicas y fuentes
@@ -93,7 +104,8 @@ Las decisiones metodológicas están documentadas en
 
 ## Notebooks
 
-- `notebooks/costo_capital.ipynb` : regresiones de betas, desapalancamiento, ponderación, costo de deuda y WACC
+- `notebooks/costo_capital.ipynb` : regresiones de beta, desapalancamiento, ponderación, costo de deuda y WACC
+- `notebooks/flujos.ipynb` : capex normalizado, capital de trabajo y flujo de caja libre del año base
 
 ## Metodología
 
@@ -137,6 +149,8 @@ Se aísla la contribución de la adquisición para medir el crecimiento real alr
 - **El rating sintético resulta más severo que la calificación real.** La cobertura de 1.64x arroja B3/B− con la tabla de empresas pequeñas, mientras Fitch afirma A+(mex), equivalente a un rango entre BB y BBB− internacional. La brecha de dos o tres escalones persiste porque la calificadora usa deuda sobre EBITDAR y pondera escala, diversificación de clientes y líneas comprometidas, factores que la tabla ignora. No se ajusta el costo de deuda: adoptar el rating de Fitch exigiría un spread en escala nacional incompatible con la construcción en dólares.
 
 - **El retorno sobre el capital no cubre el costo de capital.** ROC de 5.97% sobre capital total y 8.35% sobre capital operativo, contra un WACC de 12.34%. Ninguno de los escenarios de margen evaluados cierra la brecha. La consecuencia es que la reinversión destruye valor, algo que el modelo de crecimiento fundamental va a reflejar.
+
+- **La D&A no es toda reponible con capex.** Un tercio corresponde a activos arrendados bajo IFRS 16, que se reponen firmando contratos nuevos y no aparecen en el capex del estado de flujos, y un 6% es amortización de intangibles, que no se repone. Comparado contra la depreciación de activos propios, el capex de 2025 la supera en 32%: no hay subinversión, y la reinversión del año base resulta casi nula. Con una tasa de reinversión de 0.5%, el crecimiento fundamental casicero.
 
 ## Datos
 

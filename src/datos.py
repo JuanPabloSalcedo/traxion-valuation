@@ -53,7 +53,7 @@ def margenes(df, col_ingresos_org=None, col_ebit_org=None):
 
     return df
 
-#ultimos doce meses
+# ultimos doce meses
 
 def construir_udm(anual, semestre_anterior, semestre_actual):
     """Construye una ventana de doce meses: ejercicio anual completo, menos el
@@ -78,7 +78,7 @@ def construir_ano_base(ingresos_base, margen_ebit):
     }
 
 
-#retorno sobre el capital
+#retorno sobreel capital
 
 def capital_invertido(deuda, patrimonio, efectivo):
     """Capital invertido en la operacion: deuda mas patrimonio menos caja"""
