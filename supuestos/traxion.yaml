@@ -44,3 +44,12 @@ crecimiento:
 inflacion_esperada:
   mxn: 0.0375
   usd: 0.0225
+
+  estructura_capital:
+  ratio_deuda_actual: 0.707
+  ratio_deuda_optimo: 0.35
+  wacc_actual: 0.1234
+  wacc_optimo: 0.1090
+  rating_actual: B3/B-
+  rating_optimo: Baa2/BBB
+  sobrecosto_pb: 144

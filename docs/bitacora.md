@@ -6,6 +6,66 @@ Orden cronológico inverso: la entrada más reciente primero.
 
 Formato: fecha, qué se encontró o decidió, en qué se basa, qué implica para el resto del modelo.
 
+## 2026-09-12 - Módulo 4: Estructura óptima de capital
+
+Cálculo en `notebooks/estructura_capital.ipynb`
+
+El costo de capital no es fijo: depende de la mezcla entre deuda y patrimonio. Más deuda abarata el financiamiento porque los intereses son deducibles, pero encarece tanto el patrimonio (el beta sube con el apalancamiento) como la deuda misma, porque el riesgo de incumplimiento crece.
+
+El WACC tiene por tanto un mínimo. Este módulo lo encuentra recalculando el costo de capital para cada ratio de deuda entre 0% y 90%.
+
+En cada escalón:
+
+1. Se reapalanca el beta desapalancado con el D/E correspondiente, lo que
+   da un nuevo costo del patrimonio.
+2. Se calcula el gasto de intereses de ese nivel de deuda, de ahí la
+   cobertura, el rating sintético, el spread y el costo de deuda.
+3. Se ponderan ambos
+
+El paso 2 es circular: el gasto de intereses depende del costo de deuda, que depende del rating, que depende de la cobertura, que depende del gasto
+de intereses. Se resuelve iterando hasta que el rating se estabiliza.
+
+a medida que sube la deuda el spread crece despacio y en algún punto se dispara, cuando la cobertura cruza hacia la zona especulativa. Ahí el WACC deja de bajar y empieza a subir.
+
+Traxión opera hoy con 70.7% de deuda sobre valor de mercado. El cronograma dirá si eso está por encima, por debajo o cerca del óptimo, y con ello qué estructura usar para descontar los flujos en el módulo siguiente.
+
+### Resultado
+
+| | Ratio de deuda | WACC | Rating |
+|---|---|---|---|
+| Óptimo | 35% | 10.90% | Baa2/BBB |
+| Actual | 70.7% | 12.34% | B3/B− |
+
+Traxión opera al doble de su estructura óptima. 
+
+¿CON QUE WACC DESCONTAR?
+
+ACTUAL: 70.7%: WACC=12.34%
+ÓPTIMO: 35%: WACC=10.9%
+
+**DECISIÓN** 
+Valor con estructura actual (WACC 12.34%) y valor con estructura óptima (WACC 10.90%).
+
+La diferencia entre ambos es el costo del sobreapalancamiento
+
+
+## 2026-09-12 - notas sobre modulos siguientes: crecimiento, proyección, etc.
+
+La empresa tuvo un crecimiento organico de 3.2%. pero el crecimiento fundamental implicito viene siendo alrededor de 0.03%.
+
+Damodaran resuelve el crecimiento en fases:
+
+Alta: de 1 a 5 años, con crecimiento y reinversión
+Transición: años 6 a 10, converge linealmente hacie el estable
+Estable: 11+, g menor o igual a tasa libre de riesgo, reinversión = g/ROC estable
+
+Posibles escenarios:
+ROC se queda en 5.97%, pesimista
+ROC mejora. Si el margen se recupera y el capital no crece, que es lo que Traxion anuncio al salir de flota de carga, entonces el ROC sube.
+La empresa achica y mejora, vende actvos y el capital invertido baja
+
+Nota: en 2026-08-23 se establecio que el ROC sobre capital operativo (sin credito mercantil e intangibles) es 8.35%. Si la empresa deja de hacer adquisiciones el ROC marginal se acerca mas a este numero.
+
 ## 2026-09-12 - Módulo 3: flujo de caja libre del año base
 
 Cálculo en `notebooks/flujos.ipynb`

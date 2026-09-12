@@ -23,8 +23,8 @@ Módulos 1 a 3 completados.
 - [x] Costo de deuda y rating sintético
 - [x] WACC
 - [x] Flujo de caja libre del año base
-- [ ] Crecimiento fundamental
-- [ ] Valor terminal
+- [x] Estructura óptima de capital
+- [ ] Proyección y valor terminal
 - [ ] Puente al patrimonio y valor por acción
 - [ ] Verificación contra mercado
 - [ ] Simulación de Monte Carlo
@@ -91,6 +91,17 @@ Con el año base adoptado, el retorno sobre el capital invertido después de imp
 Cuando el retorno está por debajo del costo de capital, la reinversión destruye valor. El modelo de crecimiento fundamental va a reflejarlo.
 
 
+### La empresa opera al doble de su estructura óptima
+
+![Costo de capital según la estructura de financiamiento](docs/img/cronograma_wacc.png)
+
+Recalculando el costo de capital para cada ratio de deuda, el mínimo está en 35% con un WACC de 10.90%. Traxión opera en 70.7%.
+
+Al pasar de 35% a 40% la empresa lo pierde y el spread de default se duplica; entre 45% y 50% vuelve a duplicarse. Y a partir de cierto nivel el apalancamiento se realimenta: entre 65% y 70% la cobertura de intereses cae 45% al subir la deuda solo cinco puntos, porque un spread mayor eleva el gasto financiero, lo que hunde la cobertura y confirma un rating peor.
+
+La valoración reporta dos valores, uno con cada estructura. La diferencia es el costo del sobreapalancamiento.
+
+
 ## Estructura
 
 - `data/` : reportes fuente, datos intermedios y procesados
@@ -106,6 +117,7 @@ Las decisiones metodológicas están documentadas en
 
 - `notebooks/costo_capital.ipynb` : regresiones de beta, desapalancamiento, ponderación, costo de deuda y WACC
 - `notebooks/flujos.ipynb` : capex normalizado, capital de trabajo y flujo de caja libre del año base
+- `notebooks/estructura_capital.ipynb` : cronograma de costo de capital por ratio de deuda y estructura óptima
 
 ## Metodología
 
@@ -151,6 +163,8 @@ Se aísla la contribución de la adquisición para medir el crecimiento real alr
 - **El retorno sobre el capital no cubre el costo de capital.** ROC de 5.97% sobre capital total y 8.35% sobre capital operativo, contra un WACC de 12.34%. Ninguno de los escenarios de margen evaluados cierra la brecha. La consecuencia es que la reinversión destruye valor, algo que el modelo de crecimiento fundamental va a reflejar.
 
 - **La D&A no es toda reponible con capex.** Un tercio corresponde a activos arrendados bajo IFRS 16, que se reponen firmando contratos nuevos y no aparecen en el capex del estado de flujos, y un 6% es amortización de intangibles, que no se repone. Comparado contra la depreciación de activos propios, el capex de 2025 la supera en 32%: no hay subinversión, y la reinversión del año base resulta casi nula. Con una tasa de reinversión de 0.5%, el crecimiento fundamental casicero.
+
+- **La estructura de capital actual cuesta.** El cronograma sitúa el óptimo en 35% de deuda con un WACC de 10.90%, contra el 70.7% y 12.34% actuales. El óptimo coincide con el último escalón de grado de inversión sintético. La valoración reporta el valor con ambas estructuras en vez de elegir una, porque la diferencia es diagnóstico.
 
 ## Datos
 
