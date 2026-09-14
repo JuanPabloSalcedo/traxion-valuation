@@ -7,10 +7,6 @@ Se valora como ensayo metodológico previo a la valoración de una empresa priva
 
 ## Estado
 
-## Estado
-
-Módulos 1 a 3 completados.
-
 - [x] Estructura del repositorio
 - [x] Serie histórica 2021-2025 transcrita y verificada
 - [x] Criterio de deuda (incluye arrendamientos IFRS 16)
@@ -24,9 +20,7 @@ Módulos 1 a 3 completados.
 - [x] WACC
 - [x] Flujo de caja libre del año base
 - [x] Estructura óptima de capital
-- [ ] Proyección y valor terminal
-- [ ] Puente al patrimonio y valor por acción
-- [ ] Verificación contra mercado
+- [x] Proyección, valor terminal y valoración
 - [ ] Simulación de Monte Carlo
 
 ## Resultados hasta ahora
@@ -66,6 +60,14 @@ Módulos 1 a 3 completados.
 
 Cifras en millones de pesos. Fecha de valoración: 7 de agosto de 2026.
 
+**Valoración**
+
+| | Valor de la operación | Patrimonio | Por acción |
+|---|---|---|---|
+| Estructura actual | 14,738.6 | 185.9 | 0.33 |
+| Estructura óptima | 15,615.7 | 1,063.0 | 1.91 |
+| Precio de mercado | 21,163 | 6,610.6 | 11.89 |
+
 ### El beta ascendente
 
 El beta de regresión de Traxión no sirve como insumo: da 0.594 con un intervalo de confianza que va de 0.24 a 0.95, porque la acción negocia poco y el mercado explica apenas el 6.5% de su variación. Con ese rango el costo del patrimonio variaría casi cinco puntos porcentuales.
@@ -101,6 +103,20 @@ Al pasar de 35% a 40% la empresa lo pierde y el spread de default se duplica; en
 
 La valoración reporta dos valores, uno con cada estructura. La diferencia es el costo del sobreapalancamiento.
 
+### El crecimiento destruye valor, y el mercado descuenta otro escenario
+
+Mientras el retorno sobre el capital esté por debajo del costo de capital, crecer consume valor: con 0% de crecimiento el patrimonio vale 1,591 millones y con 5% vale 632. No existe ninguna tasa de crecimiento que lleve el modelo al precio de mercado.
+
+La valoración inversa identifica qué habría que suponer para llegar a 11.89 por acción: un margen operativo de 8.74%, que supera el techo de recuperación total de los tres segmentos, o un costo de capital de 8.0%. Una combinación plausible sería margen de 7.66% con WACC de 9.5%.
+
+El mercado descuenta el escenario de recuperación total del Módulo 1 (el más optimista de los cuatro evaluados) más un costo de capital menor. Esa segunda diferencia es la brecha entre el rating sintético de B3/B− y la calificación A+(mex) de Fitch, en valor.
+
+| | Valor de operación | Patrimonio | Por acción |
+|---|---|---|---|
+| Estructura actual | 14,738.6 | 185.9 | 0.33 |
+| Estructura óptima | 15,615.7 | 1,063.0 | 1.91 |
+| Precio de mercado | 21,163 | 6,610.6 | 11.89 |
+
 
 ## Estructura
 
@@ -118,6 +134,7 @@ Las decisiones metodológicas están documentadas en
 - `notebooks/costo_capital.ipynb` : regresiones de beta, desapalancamiento, ponderación, costo de deuda y WACC
 - `notebooks/flujos.ipynb` : capex normalizado, capital de trabajo y flujo de caja libre del año base
 - `notebooks/estructura_capital.ipynb` : cronograma de costo de capital por ratio de deuda y estructura óptima
+- `notebooks/valoracion.ipynb` : proyección, valor terminal, puente al patrimonio y valoración inversa
 
 ## Metodología
 
@@ -165,6 +182,8 @@ Se aísla la contribución de la adquisición para medir el crecimiento real alr
 - **La D&A no es toda reponible con capex.** Un tercio corresponde a activos arrendados bajo IFRS 16, que se reponen firmando contratos nuevos y no aparecen en el capex del estado de flujos, y un 6% es amortización de intangibles, que no se repone. Comparado contra la depreciación de activos propios, el capex de 2025 la supera en 32%: no hay subinversión, y la reinversión del año base resulta casi nula. Con una tasa de reinversión de 0.5%, el crecimiento fundamental casicero.
 
 - **La estructura de capital actual cuesta.** El cronograma sitúa el óptimo en 35% de deuda con un WACC de 10.90%, contra el 70.7% y 12.34% actuales. El óptimo coincide con el último escalón de grado de inversión sintético. La valoración reporta el valor con ambas estructuras en vez de elegir una, porque la diferencia es diagnóstico.
+
+- **Los supuestos de madurez cambian en bloque.** El valor terminal no usa los supuestos de hoy: el beta converge a 1, la estructura al óptimo de 35%, el ROC al costo de capital estable de 10.49% y la reinversión a g/ROC. Mezclar crecimiento de empresa madura con beta y ROC de empresa en crecimiento produce un valor terminal incoherente. Verificación: el beta desapalancado implícito en esos supuestos es 0.726, cercano al 0.793 estimado con comparables.
 
 ## Datos
 

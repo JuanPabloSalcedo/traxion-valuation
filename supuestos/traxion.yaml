@@ -45,7 +45,7 @@ inflacion_esperada:
   mxn: 0.0375
   usd: 0.0225
 
-  estructura_capital:
+estructura_capital:
   ratio_deuda_actual: 0.707
   ratio_deuda_optimo: 0.35
   wacc_actual: 0.1234
@@ -53,3 +53,23 @@ inflacion_esperada:
   rating_actual: B3/B-
   rating_optimo: Baa2/BBB
   sobrecosto_pb: 144
+
+proyeccion:
+  anios_fase_alta: 5
+  g_fase_alta: 0.030
+  roc_inicial: 0.0597
+  roc_final: 0.0835
+  beta_estable: 1.0
+  wacc_estable: 0.1049
+  roc_estable: 0.1049
+  g_estable: 0.030
+  reinversion_estable: 0.286
+
+valoracion:
+  valor_operacion_actual: 14738.6
+  valor_operacion_optimo: 15615.7
+  patrimonio_actual: 185.9
+  patrimonio_optimo: 1063.0
+  valor_accion_actual: 0.33
+  valor_accion_optimo: 1.91
+  peso_valor_terminal: 0.75

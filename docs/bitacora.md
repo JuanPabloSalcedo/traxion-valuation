@@ -6,6 +6,57 @@ Orden cronológico inverso: la entrada más reciente primero.
 
 Formato: fecha, qué se encontró o decidió, en qué se basa, qué implica para el resto del modelo.
 
+
+## 2026-09-14 - Módulo 5: Valoración
+
+Descuento de los flujos proyectados al costo de capital para obtener el valor de la operación, y de ahí el patrimonio.
+
+El crecimiento no se supone: se deriva de cuánto reinvierte la empresa y a qué retorno.
+
+g = tasa de reinversión * ROC
+
+## El problema del año base
+
+El Módulo 3 dejó una contradicción. La empresa creció 3.2% orgánico el último año con una tasa de reinversión de 0.5%, lo que implica un
+crecimiento fundamental de 0.03%.
+
+Y el desglose por segmento matiza ese 3.2%. Entre 6M25 y 6M26, logística creció 96.3%, carga cayó 10.4% y personas creció 4.5%. Sin logística, los otros dos segmentos cayeron 1.9%. El salto de logística es en su mayor parte Solistica El cálculo del Módulo 1 restó la contribución de Solistica de 2025 pero no la de 2026, de modo que el 3.2% puede estar un poco sobreestimado.
+
+## Se reportan dos valores
+
+La estructura actual de Traxión, 70.7% de deuda, está al doble del óptimo de 35% calculado en el Módulo 4. La valoración se hace con ambos WACC.
+
+La diferencia entre los dos valores es el costo del sobreapalancamiento.
+
+### Supuestos
+
+Cinco años de fase alta con crecimiento de 3.0% nominal. México crece 1.1-1.8% real con inflación esperada de 3.75%, de modo que ese nominal implica volumen levemente negativo, consistente con salir del 25% de la flota de carga. 
+
+El ROC converge de 5.97% a 8.35% en cinco años por dilución del crédito mercantil, que se mantiene fijo en 8,217 mientras el capital crece.
+
+**Estado estable.** Los supuestos de madurez cambian juntos por metodologia de Damodaran: beta a 1.0, estructura al óptimo de 35%, WACC estable de 10.49% y ROC igual al WACC. La metodología admite que el ROC lo supere a largo plazo pero solo por poco, y Traxión no tiene nada que justifique exceso perpetuo: sector fragmentado, operadores familiares que presionan precios, y la mitad del negocio es brokerage con márgenes de 2-3%. Verificación: el beta desapalancado implícito en esos supuestos es 0.726, cercano al 0.793 estimado con comparables.
+
+### Resultado
+
+| | Valor de la operación | Patrimonio | Por acción |
+|---|---|---|---|
+| Estructura actual | 14,738.6 | 185.9 | 0.33 |
+| Estructura óptima | 15,615.7 | 1,063.0 | 1.91 |
+| Precio de mercado | 21,163 | 6,610.6 | 11.89 |
+
+Desapalancar vale 877.1 millones, 1.58 por acción. El valor terminal pesa 74-75%, dentro del rango normal.
+
+### El crecimiento destruye valor
+
+Con 0% de crecimiento el patrimonio vale 1,591; con 5% vale 632. No existe ninguna tasa que lleve el valor al precio de mercado, porque durante toda la fase de proyección el ROC está por debajo del WACC y cada peso reinvertido rinde menos de lo que cuesta financiarlo. Es el diagnóstico del Módulo 2 en valor.
+
+### Valoración inversa
+
+Llegar a 11.89 exigiría un margen de 8.74%, que supera el techo de recuperación total de los tres segmentos (7.66%), o un costo de capital de 8.0%. Ninguno por sí solo es realista, pero la combinación de margen 7.66% con WACC de 9.5% da 11.90.
+
+El mercado descuenta el escenario de recuperación total del Módulo 1 (el más optimista de los cuatro evaluados) más un costo de capital 140 puntos básicos menor. Esa segunda diferencia es la brecha entre el rating sintético de B3/B- y la calificación A+(mex) de Fitch, traducida a valor. La conclusión no es que el mercado esté equivocado, sino que descuenta un escenario más optimista que el adoptado.
+
+
 ## 2026-09-12 - Módulo 4: Estructura óptima de capital
 
 Cálculo en `notebooks/estructura_capital.ipynb`
