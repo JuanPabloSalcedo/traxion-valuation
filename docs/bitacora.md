@@ -23,7 +23,7 @@ Diez mil iteraciones sobre dos supuestos: margen operativo y crecimiento, ambos 
 | Mediana | 43.6 | 791.1 |
 | Media | -215.2 | 732.5 |
 | Desviación estándar | 1,598.5 | 1,417.0 |
-| p10 | −2,688.7 | −1,239.1 |
+| p10 | -2,688.7 | -1,239.1 |
 | p90 | 1,692.8 | 2,600.0 |
 | P(patrimonio negativo) | 48.9% | 30.0% |
 
@@ -123,7 +123,7 @@ Traxión opera hoy con 70.7% de deuda sobre valor de mercado. El cronograma dir�
 | | Ratio de deuda | WACC | Rating |
 |---|---|---|---|
 | Óptimo | 35% | 10.90% | Baa2/BBB |
-| Actual | 70.7% | 12.34% | B3/B− |
+| Actual | 70.7% | 12.34% | B3/B- |
 
 Traxión opera al doble de su estructura óptima. 
 
@@ -161,7 +161,7 @@ Cálculo en `notebooks/flujos.ipynb`
 
 ### El capex parecía insuficiente y no lo era
 
-El capex de flota cayó de 16.7% de los ingresos en 2022 a 4.9% en los UDM, mientras la D&A se mantuvo en 8-9%. En la ventana reciente Traxión invierte 60 centavos por cada peso que se deprecia, lo que sugería subinversión y una reinversión neta de −1,230.3.
+El capex de flota cayó de 16.7% de los ingresos en 2022 a 4.9% en los UDM, mientras la D&A se mantuvo en 8-9%. En la ventana reciente Traxión invierte 60 centavos por cada peso que se deprecia, lo que sugería subinversión y una reinversión neta de -1,230.3.
 
 El desglose de la D&A del reporte anual 2025 muestra que la comparación estaba mal planteada:
 
@@ -196,9 +196,9 @@ El estado de flujos del 2T26 reporta -370 de variación en el semestre contra lo
 | Concepto | Monto |
 |---|---|
 | NOPAT | 1,719.4 |
-| Capex de flota | −1,881.1 |
+| Capex de flota | -1,881.1 |
 | Depreciación reponible | +1,934.2 |
-| Cambio en capital de trabajo | −62.2 |
+| Cambio en capital de trabajo | -62.2 |
 | Reinversión | 9.1 |
 | **FCFF del año base** | **1,710.3** |
 | Tasa de reinversión | 0.5% |
@@ -223,7 +223,7 @@ Se ajusta y corrige el notebook costo_capital.ipynb
 | | Antes | Después |
 |---|---|---|
 | Cobertura | 1.40x | 1.64x |
-| Rating sintético | Caa/CCC | B3/B− |
+| Rating sintético | Caa/CCC | B3/B- |
 | Spread | 8.85% | 5.09% |
 | kd en pesos | 16.48% | 12.67% |
 | kd después de impuestos | 11.54% | 8.87% |
@@ -291,7 +291,7 @@ BETAL = 0.793 * [1 + 0.70 * 2.411] = 2.131
 Ke (USD) = 4.43% + 2.131 * 6.82% = 18.96%
 Ke (MXN) = 20.71%
 
-La mediana de D/E de las comparables es 19%. Traxión está muy por encima por la deuda de Solistica y por la caída del precio de la acción, que acumuló un alfa de −30% anual en tres años.
+La mediana de D/E de las comparables es 19%. Traxión está muy por encima por la deuda de Solistica y por la caída del precio de la acción, que acumuló un alfa de -30% anual en tres años.
 
 ### Costo de deuda
 
@@ -342,7 +342,7 @@ Ponderaciones a valor de mercado. El WACC queda cerca del costo de deuda porque 
 
 ### El retorno no cubre el costo de capital
 
-Capital invertido = 15,935.7 + 14,260.9 − 1,383.0 = 28,813.6
+Capital invertido = 15,935.7 + 14,260.9 - 1,383.0 = 28,813.6
 ROC = 2,456.3 * 0.70 / 28,813.6 = 5.97%
 WACC = 14.23%
 Diferencia = -8.26 puntos
@@ -354,7 +354,7 @@ Ninguno de los cuatro escenarios de margen cierra la brecha. Con recuperación t
 El capital invertido usa patrimonio contable, no de mercado: mide el capital efectivamente puesto a trabajar.
 
 
-Coincide con lo que dice el mercado: alfa de −30% anual y múltiplo EV/ventas de 0.56x contra 1.46x de mediana en las comparables de carga.
+Coincide con lo que dice el mercado: alfa de -30% anual y múltiplo EV/ventas de 0.56x contra 1.46x de mediana en las comparables de carga.
 
 ### Resultados
 
@@ -368,7 +368,7 @@ Coincide con lo que dice el mercado: alfa de −30% anual y múltiplo EV/ventas 
 | Peso de la deuda | 70.7% |
 | WACC en pesos | 14.23% |
 
-[Corregido el 2026-08-23: la cobertura se recalculó en moneda consistente. Rating B3/B−, spread 5.09%, WACC 12.34%. Ver esa entrada.]
+[Corregido el 2026-08-23: la cobertura se recalculó en moneda consistente. Rating B3/B-, spread 5.09%, WACC 12.34%. Ver esa entrada.]
 
 ## 2026-08-17 - 2026-08-20 - Beta ascendente: selección de comparables
 
@@ -691,8 +691,8 @@ Lo que sí permite afirmar es que el spread de default de México a la fecha de 
 
 Rehecha con la Rf ajustada:
 
-    Via (a): Bono M − spread CDS = 9.12% − 1.52% = 7.60%
-    Via (b): Fisher con Rf ajustada = (1.0443 * 1.0375)/1.0225 − 1 = 5.96%
+    Via (a): Bono M - spread CDS = 9.12% - 1.52% = 7.60%
+    Via (b): Fisher con Rf ajustada = (1.0443 * 1.0375)/1.0225 - 1 = 5.96%
     Diferencia: 164 puntos
 
 ### CRP
@@ -830,13 +830,13 @@ Se calcula la Rf en pesos por dos caminos independientes:
 
 **(a) Bono M menos spread de default**
 
-    9.12% − 1.62%  ≈  7.50% (rating)
-    9.12% − 1.52%  ≈  7.60% (CDS)
+    9.12% - 1.62%  ≈  7.50% (rating)
+    9.12% - 1.52%  ≈  7.60% (CDS)
 
 **(b) Treasury convertido con paridad de Fisher**
 
-    Rf_MXN = (1 + Rf_USD) * (1 + inf_MXN) / (1 + inf_USD) − 1
-    Rf_MXN = (1.0465 * 1.0375) / 1.0225 − 1 = 6.183%
+    Rf_MXN = (1 + Rf_USD) * (1 + inf_MXN) / (1 + inf_USD) - 1
+    Rf_MXN = (1.0465 * 1.0375) / 1.0225 - 1 = 6.183%
 
 **Diferencia entre vías: 132 pb (rating) / 142 pb (CDS).**
 
@@ -844,7 +844,7 @@ Ambas quedan por debajo del umbral de 150 pb que marca la metodología como señ
 
 Visto de otro modo: el diferencial implícito entre el Bono M y el Treasury convertido es
 
-    (1.0912 / 1.06183) − 1 = 2.77%
+    (1.0912 / 1.06183) - 1 = 2.77%
 
 contra un spread publicado de 1.62%. La brecha de ~115 pb se explica por tres factores conocidos: la paridad de Fisher nunca se cumple exacta,
 hay diferencias de liquidez y prima por plazo entre los dos mercados, y **el dato de Damodaran tiene fecha de corte 1-ene-2026, siete meses anterior a la valoración**, en un período con choque de energéticos y presión sobre el peso.
@@ -1080,7 +1080,7 @@ caida no proviene de la mezcla por Solistica. Vease entrada de esa fecha.]
 
 **Crecimiento real (sin Solistica):**
 
-Ingresos 2025 = 33,814 − 3,736 = 30,078.
+Ingresos 2025 = 33,814 - 3,736 = 30,078.
 Contra 2024 (29,142): crecimiento cercani a 3.2%. El 16% consolidado es mayormente adquisición, no crecimiento del negocio base.
 
 **Decisión**
