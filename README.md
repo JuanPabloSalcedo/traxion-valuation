@@ -3,9 +3,17 @@
 Valoración por flujo de caja libre a la firma (FCFF).
 
 Grupo Traxión es la empresa líder de transporte y logística en México.
-Se valora como ensayo metodológico previo a la valoración de una empresa privada de transporte de pasajeros.
+Se valora como ensayo metodológico previo a la valoración de una empresa privada colombiana de transporte de pasajeros.
+
+La empresa viene de tres años difíciles: márgenes cayendo, cobertura de intereses en mínimos y una acción que perdió cerca de 30% anual frente al mercado. En 2025 compró Solistica y su deuda llegó al 70.7% de la estructura de capital. Los valores bajos que arroja el modelo reflejan esos fundamentales.
+
+Veáse deterioro y separación de la acción del mercado mexicano:
+
+![Traxión contra el mercado mexicano](docs/img/traxion_vs_mercado.png)
 
 ## Estado
+
+Proyecto completado.
 
 - [x] Estructura del repositorio
 - [x] Serie histórica 2021-2025 transcrita y verificada
@@ -21,9 +29,9 @@ Se valora como ensayo metodológico previo a la valoración de una empresa priva
 - [x] Flujo de caja libre del año base
 - [x] Estructura óptima de capital
 - [x] Proyección, valor terminal y valoración
-- [ ] Simulación de Monte Carlo
+- [x] Simulación de Monte Carlo
 
-## Resultados hasta ahora
+## Resultados
 
 **Año base** (últimos doce meses a junio 2026, primeros doce meses completos con Solistica)
 
@@ -80,9 +88,9 @@ Así se ve una de ellas. Cada punto es una semana, la pendiente de la recta es e
 
 ![Betas de regresión de las comparables](docs/img/betas_comparables.png)
 
-Repitiendo el ejercicio sobre las veinte, las barras grises son el error estándar de cada estimación. Se solapan entre casi todas las empresas, de modo que la diferencia entre un beta de 0.85 y uno de 1.05 no es estadísticamente distinguible. Esa es la razón del enfoque ascendente: el error del promedio cae con la raíz del número de comparables.
+Repitiendo el ejercicio sobre las veinte, las barras grises son el error estándar de cada estimación. Se solapan entre casi todas las empresas, de modo que la diferencia entre un beta de 0.85 y uno de 1.05 no es estadísticamente distinguible. por eso el uso del enfoque ascendente, el error del promedio cae con la raíz del número de comparables n.
 
-La mediana desapalancada del grupo de carga da 0.873 contra el 0.87 que publica Damodaran para Trucking EE.UU., calculado sobre otras 26 empresas con distinta ventana y frecuencia. Dos caminos independientes al mismo número.
+La mediana desapalancada del grupo de carga da 0.873 contra el 0.87 que publica Damodaran para Trucking EE.UU., calculado sobre otras 26 empresas con distinta ventana y frecuencia. Dos formas distintas sieron el mismo resultado.
 
 ### El retorno no cubre el costo de capital
 
@@ -111,12 +119,30 @@ La valoración inversa identifica qué habría que suponer para llegar a 11.89 p
 
 El mercado descuenta el escenario de recuperación total del Módulo 1 (el más optimista de los cuatro evaluados) más un costo de capital menor. Esa segunda diferencia es la brecha entre el rating sintético de B3/B− y la calificación A+(mex) de Fitch, en valor.
 
-| | Valor de operación | Patrimonio | Por acción |
-|---|---|---|---|
-| Estructura actual | 14,738.6 | 185.9 | 0.33 |
-| Estructura óptima | 15,615.7 | 1,063.0 | 1.91 |
-| Precio de mercado | 21,163 | 6,610.6 | 11.89 |
 
+### La incertidumbre es asimétrica por el apalancamiento
+
+![Distribución del valor bajo dos estructuras de capital](docs/img/distribucion_valor.png)
+
+Diez mil simulaciones sobre el margen operativo y el crecimiento, con el costo de capital endógeno: cada iteración sortea el margen, de ahí sale la cobertura de intereses, el rating sintético y el costo de deuda. La correlación entre margen y WACC sale del modelo.
+
+| | Estructura actual | Estructura óptima |
+|---|---|---|
+| Mediana | 43.6 | 791.1 |
+| Desviación estándar | 1,598.5 | 1,417.0 |
+| p10 | -2,688.7 | -1,239.1 |
+| P(patrimonio negativo) | 48.9% | 30% |
+
+Con la estructura actual hay casi la mitad de probabilidad de que el patrimonio no valga nada. Desapalancar mejora el valor esperado y reduce la dispersión a la vez.
+
+El sobreapalancamiento no solo baja el valor, también concentra probabilidad en la cola mala.
+
+En ninguna de las veinte mil corridas el valor alcanza el precio de mercado. La brecha no es un problema de estructura de capital: está en los supuestos operativos.
+
+
+**El resultado es coherente con lo que ya muestran los datos de la empresa.** Un patrimonio cercano a cero suena extremo, pero corresponde a una compañía con cobertura de intereses de 1.64x, retorno sobre el capital de 5.97% contra un costo de 12.34%, márgenes que llevan tres años cayendo y una acción que perdió 30% anual frente al mercado en ese período. Si el modelo diera un valor cómodo con esos fundamentales, habría que revisarlo.
+
+Lo que el análisis no puede afirmar es que el mercado esté equivocado. La valoración inversa muestra que el precio de 11.89 es consistente con el escenario de recuperación total de los tres segmentos y un costo de capital acorde a la calificación A+(mex) de Fitch. Ese escenario es posible; este análisis lo consideró y lo descartó por ser bastante optimista.
 
 ## Estructura
 
@@ -135,6 +161,8 @@ Las decisiones metodológicas están documentadas en
 - `notebooks/flujos.ipynb` : capex normalizado, capital de trabajo y flujo de caja libre del año base
 - `notebooks/estructura_capital.ipynb` : cronograma de costo de capital por ratio de deuda y estructura óptima
 - `notebooks/valoracion.ipynb` : proyección, valor terminal, puente al patrimonio y valoración inversa
+- `notebooks/simulacion.ipynb` : simulación de Monte Carlo con costo de capital endógeno
+
 
 ## Metodología
 
@@ -184,6 +212,8 @@ Se aísla la contribución de la adquisición para medir el crecimiento real alr
 - **La estructura de capital actual cuesta.** El cronograma sitúa el óptimo en 35% de deuda con un WACC de 10.90%, contra el 70.7% y 12.34% actuales. El óptimo coincide con el último escalón de grado de inversión sintético. La valoración reporta el valor con ambas estructuras en vez de elegir una, porque la diferencia es diagnóstico.
 
 - **Los supuestos de madurez cambian en bloque.** El valor terminal no usa los supuestos de hoy: el beta converge a 1, la estructura al óptimo de 35%, el ROC al costo de capital estable de 10.49% y la reinversión a g/ROC. Mezclar crecimiento de empresa madura con beta y ROC de empresa en crecimiento produce un valor terminal incoherente. Verificación: el beta desapalancado implícito en esos supuestos es 0.726, cercano al 0.793 estimado con comparables.
+
+- **El costo de capital es endógeno en la simulación.** En vez de correlacionar margen y WACC, cada iteración deriva la cobertura de intereses del margen sorteado, de ahí el rating sintético y el costo de deuda. La correlación sale del modelo, no de un supuesto.
 
 ## Datos
 

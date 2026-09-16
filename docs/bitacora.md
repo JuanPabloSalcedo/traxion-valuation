@@ -6,6 +6,44 @@ Orden cronológico inverso: la entrada más reciente primero.
 
 Formato: fecha, qué se encontró o decidió, en qué se basa, qué implica para el resto del modelo.
 
+## 2026-09-16 - Módulo 6: simulación de Monte Carlo
+
+Cálculo en `notebooks/simulacion.ipynb`.
+
+### Método
+
+Diez mil iteraciones sobre dos supuestos: margen operativo y crecimiento, ambos con distribución triangular a partir de los rangos ya establecidos. El margen va de 4.93% a 7.66% con moda en 6.45%, que son los cuatro escenarios por segmento del Módulo 1. El crecimiento de 0% a 5% con moda en 3.0%, con techo en la tasa libre de riesgo de 5.96%.
+
+**El costo de capital es endógeno.** En vez de correlacionar margen y WACC, cada iteración sortea el margen, de ahí sale el EBIT, la cobertura de intereses, el rating sintético con la función del Módulo 2, el spread y el costo de deuda. La correlación se deriva del modelo. Es el paso que evita sortear un margen alto junto a un costo de capital alto, combinación que no puede ocurrir.
+
+### Resultado
+
+| | Actual | Óptima |
+|---|---|---|
+| Mediana | 43.6 | 791.1 |
+| Media | -215.2 | 732.5 |
+| Desviación estándar | 1,598.5 | 1,417.0 |
+| p10 | −2,688.7 | −1,239.1 |
+| p90 | 1,692.8 | 2,600.0 |
+| P(patrimonio negativo) | 48.9% | 30.0% |
+
+Con la estructura actual el patrimonio vale cerca de cero y hay casi la mitad de probabilidad de que no valga nada. Desapalancar mejora el valor esperado y reduce la dispersión a la vez.
+
+El puente al patrimonio resta la deuda actual en ambos casos. Comparar estructuras no supone que la empresa repague deuda gratis, porque eso inventaría valor; lo que se responde es cuánto valdría el patrimonio si la empresa lograra financiarse al costo óptimo.
+
+### El apalancamiento hace asimétrico el valor
+
+
+La razón es que el margen golpea por dos vías a la vez: reduce el EBIT y empeora la cobertura de intereses, lo que encarece la deuda y el costo de capital. Con 70.7% de deuda la segunda vía amplifica la primera.
+
+Completa el diagnóstico descrito anteriormente donde se midió que el sobreapalancamiento le cuesta a la empresa en termins  de costo de capital; aquí se ve que además concentra probabilidad en la cola mala.
+
+### Ninguna simulación alcanza el precio de mercado
+
+En las veinte mil, bajo ninguna de las dos estructuras, el valor llega a 11.89 por acción. 
+
+La brecha con el mercado no es un problema de estructura de capital: desapalancar mueve el centro de la distribución poco más de un peso por acción. Está en los supuestos operativos, como ya había identificado la valoración inversa,.
+
 
 ## 2026-09-14 - Módulo 5: Valoración
 
@@ -223,7 +261,7 @@ Regresiones semanales de tres años contra el S&P 500 sobre las veinte comparabl
 
 El R2 promedio de 15.2% supera el 13.1% de Damodaran para Trucking EE.UU. Pero el error estándar promedio de 0.19 hace que los intervalos de casi todas las empresas se solapen, así que ninguna estimación individual sirve sola.
 
-La mediana desapalancada de carga da 0.873 contra el 0.87 que publica Damodaran, calculado sobre otras 26 empresas con otra ventana. Dos caminos independientes al mismo número.
+La mediana desapalancada de carga da 0.873 contra el 0.87 que publica Damodaran, calculado sobre otras 26 empresas con otra ventana. 
 
 Se usa mediana y no media porque RXO (1.438) arrastra el promedio de logística.
 
