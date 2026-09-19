@@ -223,6 +223,17 @@ Se aísla la contribución de la adquisición para medir el crecimiento real alr
 
 La procedencia de cada dato está en [`docs/fuentes.md`](docs/fuentes.md).
 
+## Reproducibilidad
+
+El proyecto tiene dos clases de insumos y solo una es reproducible al pie de la letra.
+
+**Congelados.** Los estados financieros de Traxión están en `data/raw/` como los publicó la empresa, con las páginas mapeadas en [`docs/fuentes.md`](docs/fuentes.md).
+Los archivos de Damodaran también: su página `datacurrent.html` se actualiza frecuentemente, por eso se conservan localmente con la fecha de corte en el nombre. Cualquiera puede rehacer la serie histórica, la normalización del EBIT, el año base y el costo de capital y llegar a los mismos números.
+
+**No congelados.** Los precios, la deuda, la capitalización de mercado y los ingresos de las veinte comparables se descargan en tiempo de ejecución con `yfinance`. Esos datos cambian.
+
+Ejemplo: En la celda de múltiplos EV/ventas. El texto de la ponderación usa carga 1.46x, personas 0.95x y logística 0.82x, que son los valores a la fecha de valoración y los que producen los pesos de 40.9% / 29.6% / 29.5% del beta desapalancado de 0.793. Una corrida posterior devuelve otros múltiplos y otros pesos.
+
 ## Instalación
 
     python -m venv .venv

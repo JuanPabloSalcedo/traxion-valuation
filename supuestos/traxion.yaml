@@ -74,14 +74,16 @@ valoracion:
   valor_accion_optimo: 1.91
   peso_valor_terminal: 0.75
 
-  simulacion:
+simulacion:
   iteraciones: 10000
+  semilla: 27
   margen_min: 0.0493
   margen_moda: 0.0645
   margen_max: 0.0766
   g_min: 0.000
   g_moda: 0.030
   g_max: 0.050
+  g_techo: 0.0596
   mediana_actual: 43.6
   mediana_optima: 791.1
   p_negativo_actual: 0.489
